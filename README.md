@@ -15,7 +15,7 @@
 [![Bilingual](https://img.shields.io/badge/Lang-AR%20%7C%20EN-FC5D01?style=for-the-badge)](#-internationalization)
 [![Dark Mode](https://img.shields.io/badge/Dark_Mode-Supported-2D3748?style=for-the-badge)](#-theme-system)
 [![RTL](https://img.shields.io/badge/RTL-Ready-FC5D01?style=for-the-badge)](#)
-[![Made with Love](https://img.shields.io/badge/Made_with-❤️_in_Egypt-E53E3E?style=for-the-badge)](#)
+[![Cairo](https://img.shields.io/badge/Built_in-Cairo,_Egypt-E53E3E?style=for-the-badge)](#)
 
 **Landing page احترافية لتطبيق سِكّة — تطبيق إدارة مهام الديليفري الذكي لسائقي التوصيل في مصر**
 
@@ -530,7 +530,5 @@ translations.fr = {
 ---
 
 <sub>**© 2026 سِكّة — جميع الحقوق محفوظة**</sub>
-
-<sub>صُنع بـ ❤️ في مصر — *Made with ❤️ in Egypt*</sub>
 
 </div>

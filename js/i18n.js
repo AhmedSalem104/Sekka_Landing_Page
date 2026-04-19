@@ -161,7 +161,6 @@ const translations = {
     "footer.contact.phone": "01015819700",
     "footer.download.title": "حمّل التطبيق",
     "footer.copyright": "© 2026 سِكّة — جميع الحقوق محفوظة",
-    "footer.made": "صُنع بـ ❤️ في مصر",
 
     // Sticky
     "sticky.text": "حمّل التطبيق",
@@ -326,7 +325,6 @@ const translations = {
     "footer.contact.phone": "01015819700",
     "footer.download.title": "Get the App",
     "footer.copyright": "© 2026 Sekka — All rights reserved",
-    "footer.made": "Made with ❤️ in Egypt",
 
     // Sticky
     "sticky.text": "Get the App",

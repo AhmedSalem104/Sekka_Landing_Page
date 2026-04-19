@@ -181,43 +181,63 @@ $(document).ready(function() {
 
 
   /* ============================================
-     7. Word Rotator (fade-up / fade-down smooth rotator)
+     7. Typewriter Effect (moderate, readable pace)
      ============================================ */
-  const rotatorEl = document.getElementById('typewriter');
-  if (rotatorEl) {
-    const phraseKeys = ['hero.typewriter.1', 'hero.typewriter.2', 'hero.typewriter.3', 'hero.typewriter.4'];
-    let idx = 0;
-    let timer = null;
+  const typewriterEl = document.getElementById('typewriter');
+  if (typewriterEl) {
+    const phrasesKeys = ['hero.typewriter.1', 'hero.typewriter.2', 'hero.typewriter.3', 'hero.typewriter.4'];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let loopTimer = null;
 
-    function renderPhrase(i) {
-      const text = SekkaI18n.t(phraseKeys[i]);
-      rotatorEl.classList.remove('rotate-in');
-      rotatorEl.classList.add('rotate-out');
-      setTimeout(() => {
-        rotatorEl.textContent = text;
-        rotatorEl.classList.remove('rotate-out');
-        rotatorEl.classList.add('rotate-in');
-      }, 420);
+    // Tuned for comfortable reading:
+    const TYPE_SPEED = 95;      // ms per char while typing
+    const DELETE_SPEED = 55;    // ms per char while deleting
+    const END_PAUSE = 1800;     // pause after finishing a phrase (reading time)
+    const START_PAUSE = 350;    // pause before starting next phrase
+
+    function getPhrases() {
+      return phrasesKeys.map(k => SekkaI18n.t(k));
     }
 
-    function startRotator() {
-      // Initial phrase
-      rotatorEl.textContent = SekkaI18n.t(phraseKeys[0]);
-      rotatorEl.classList.add('rotate-in');
+    function typeLoop() {
+      const phrases = getPhrases();
+      const current = phrases[phraseIndex] || '';
 
-      if (timer) clearInterval(timer);
-      timer = setInterval(() => {
-        idx = (idx + 1) % phraseKeys.length;
-        renderPhrase(idx);
-      }, 2800);
+      if (!isDeleting) {
+        charIndex++;
+        typewriterEl.textContent = current.substring(0, charIndex);
+        if (charIndex >= current.length) {
+          isDeleting = true;
+          loopTimer = setTimeout(typeLoop, END_PAUSE);
+          return;
+        }
+        loopTimer = setTimeout(typeLoop, TYPE_SPEED);
+      } else {
+        charIndex--;
+        typewriterEl.textContent = current.substring(0, Math.max(charIndex, 0));
+        if (charIndex <= 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          loopTimer = setTimeout(typeLoop, START_PAUSE);
+          return;
+        }
+        loopTimer = setTimeout(typeLoop, DELETE_SPEED);
+      }
     }
 
-    document.addEventListener('sekka:langchange', () => {
-      idx = 0;
-      startRotator();
-    });
+    function restartTypewriter() {
+      if (loopTimer) clearTimeout(loopTimer);
+      charIndex = 0;
+      isDeleting = false;
+      phraseIndex = 0;
+      typewriterEl.textContent = '';
+      loopTimer = setTimeout(typeLoop, 400);
+    }
 
-    setTimeout(startRotator, 500);
+    document.addEventListener('sekka:langchange', restartTypewriter);
+    setTimeout(typeLoop, 700);
   }
 
 

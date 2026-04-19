@@ -293,31 +293,31 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
 }
 
 /* ============================================
-   Road Animation
+   Realistic Road + Animation
    ============================================ */
 .road-svg {
   width: 100%;
   height: auto;
+  max-height: 240px;
   overflow: visible;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.12));
 }
-.road-path {
-  fill: none;
-  stroke: #2D3748;
-  stroke-width: 6;
-  stroke-linecap: round;
+
+/* Moving lane dashes — creates sense of motion */
+.road-dashes-animated {
+  animation: dashScroll 0.8s linear infinite;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
 }
-.road-dashes {
-  fill: none;
-  stroke: #FC5D01;
-  stroke-width: 3;
-  stroke-dasharray: 10 14;
-  stroke-linecap: round;
-  stroke-dashoffset: 2000;
-  animation: drawRoad 4s ease-out forwards;
+@keyframes dashScroll {
+  to { stroke-dashoffset: -50; }
 }
-.road-location-pin {
-  animation: float 2s ease-in-out infinite;
+
+.road-pin {
+  animation: float 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+  transform-origin: bottom center;
 }
+.road-pin.end { animation-delay: 1.2s; }
 
 /* ============================================
    Feature Cards
@@ -500,39 +500,49 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
 .timeline-step {
   position: relative;
 }
-.timeline-number {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #FC5D01, #FF8534);
-  color: #fff;
-  font-size: 32px;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 15px 30px -5px rgba(252, 93, 1, 0.5);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.timeline-step:hover .timeline-number { transform: scale(1.1) rotate(8deg); }
-
-.timeline-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 20px;
+.timeline-icon-wrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  border-radius: 28px;
   background: linear-gradient(135deg, #FFF0E6, #FFD9BD);
   color: #FC5D01;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 12px 28px -10px rgba(252, 93, 1, 0.25);
 }
-.dark .timeline-icon { background: linear-gradient(135deg, #3a2416, #4a2d1c); color: #FF8534; }
-.timeline-step:hover .timeline-icon {
+.dark .timeline-icon-wrap { background: linear-gradient(135deg, #3a2416, #4a2d1c); color: #FF8534; }
+
+.timeline-step:hover .timeline-icon-wrap {
   transform: scale(1.08) rotate(-6deg);
   background: linear-gradient(135deg, #FC5D01, #FF8534);
   color: #fff;
-  box-shadow: 0 20px 40px -10px rgba(252, 93, 1, 0.45);
+  box-shadow: 0 22px 42px -10px rgba(252, 93, 1, 0.55);
+}
+
+.timeline-step-badge {
+  position: absolute;
+  top: -10px;
+  inset-inline-end: -10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FC5D01, #FF8534);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--bg);
+  box-shadow: 0 6px 14px rgba(252, 93, 1, 0.45);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.dark .timeline-step-badge { border-color: #121212; }
+.timeline-step:hover .timeline-step-badge {
+  transform: scale(1.15);
 }
 
 /* ============================================
@@ -931,27 +941,16 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
 }
 
 /* ============================================
-   Word Rotator (smooth fade/slide between phrases)
+   Typewriter (moderate, readable pace)
    ============================================ */
 .typewriter {
   display: inline-block;
   min-height: 1.2em;
-  min-width: 10ch;
+  min-width: 2ch;
   position: relative;
-  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
-              opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
-              filter 0.45s ease;
-  will-change: transform, opacity;
-}
-.typewriter.rotate-in {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-.typewriter.rotate-out {
-  opacity: 0;
-  transform: translateY(-12px);
-  filter: blur(4px);
+  padding-inline-end: 3px;
+  border-inline-end: 3px solid #FC5D01;
+  animation: blink 0.9s step-end infinite;
 }
 
 /* ============================================
