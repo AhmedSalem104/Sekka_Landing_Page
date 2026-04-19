@@ -357,7 +357,7 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
   width: 60px;
   height: 60px;
   border-radius: 16px;
-  background: linear-gradient(135deg, #FFF0E6, #FFD9BD);
+  background: linear-gradient(135deg, #1A202C, #2D3748);
   color: #FC5D01;
   display: inline-flex;
   align-items: center;
@@ -365,13 +365,18 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
   font-size: 28px;
   margin-bottom: 16px;
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 8px 20px -6px rgba(26, 32, 44, 0.35);
 }
 .feature-card:hover .feature-icon-wrap {
   transform: scale(1.1) rotate(-6deg);
   background: linear-gradient(135deg, #FC5D01, #FF8534);
   color: #fff;
+  box-shadow: 0 14px 30px -8px rgba(252, 93, 1, 0.55);
 }
-.dark .feature-icon-wrap { background: linear-gradient(135deg, #3a2416, #4a2d1c); color: #FF8534; }
+.dark .feature-icon-wrap {
+  background: linear-gradient(135deg, #0F1419, #1A202C);
+  color: #FF8534;
+}
 
 /* ============================================
    Problem vs Solution — Stat Bar Compare
@@ -402,14 +407,15 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #FFF0E6, #FFD9BD);
+  background: linear-gradient(135deg, #1A202C, #2D3748);
   color: #FC5D01;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 6px 14px -4px rgba(26, 32, 44, 0.3);
 }
-.dark .compare-row-icon { background: linear-gradient(135deg, #3a2416, #4a2d1c); color: #FF8534; }
+.dark .compare-row-icon { background: linear-gradient(135deg, #0F1419, #1A202C); color: #FF8534; }
 .compare-row-title {
   font-size: 17px;
   font-weight: 700;
@@ -511,15 +517,15 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
   width: 88px;
   height: 88px;
   border-radius: 28px;
-  background: linear-gradient(135deg, #FFF0E6, #FFD9BD);
+  background: linear-gradient(135deg, #1A202C, #2D3748);
   color: #FC5D01;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: 0 12px 28px -10px rgba(252, 93, 1, 0.25);
+  box-shadow: 0 14px 30px -10px rgba(26, 32, 44, 0.4);
 }
-.dark .timeline-icon-wrap { background: linear-gradient(135deg, #3a2416, #4a2d1c); color: #FF8534; }
+.dark .timeline-icon-wrap { background: linear-gradient(135deg, #0F1419, #1A202C); color: #FF8534; }
 
 .timeline-step:hover .timeline-icon-wrap {
   transform: scale(1.08) rotate(-6deg);
@@ -1031,11 +1037,74 @@ body.ltr .mobile-drawer { transform: translateX(100%); }
 @media (max-width: 1024px) { .cursor-follower { display: none; } }
 
 /* ============================================
-   Responsive Tweaks
+   Responsive Tweaks — Hero phone mockup
    ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .phone-frame { width: 280px; height: 580px; }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
-  .phone-frame { width: 240px; height: 500px; }
-  .hero-blob { opacity: 0.25; }
+  .phone-frame {
+    width: 240px;
+    height: 490px;
+    border-radius: 38px;
+    padding: 9px;
+  }
+  .phone-frame::before {
+    width: 80px; height: 22px; top: 14px;
+    border-radius: 14px;
+  }
+  .phone-screen { border-radius: 30px; }
+  .hero-blob { opacity: 0.22; }
+
+  /* Compact app UI inside smaller phone */
+  .app-ui { padding: 36px 14px 14px; gap: 10px; }
+  .app-ui-title { font-size: 15px; }
+  .app-ui-greeting { font-size: 10px; }
+  .app-ui-stat { padding: 9px; }
+  .app-ui-stat-label { font-size: 9px; }
+  .app-ui-stat-value { font-size: 17px; }
+  .app-ui-order { padding: 9px; gap: 8px; }
+  .app-ui-order-name { font-size: 12px; }
+  .app-ui-order-addr { font-size: 9px; }
+  .app-ui-order-price { font-size: 11px; }
+  .app-ui-order-status { font-size: 8px; padding: 2px 6px; }
+  .app-ui-progress { padding: 8px 10px; }
+  .app-ui-progress-row { font-size: 10px; }
+  .app-ui-nav-item { font-size: 8px; }
+  .app-ui-nav-item svg { width: 16px; height: 16px; }
+
+  /* Tighter float badges */
+  .phone-float-badge {
+    padding: 7px 10px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+  .phone-float-badge .text-lg { font-size: 14px !important; }
+  .phone-float-badge .text-xs { font-size: 9px !important; }
+  .float-badge-icon { width: 28px; height: 28px; }
+  .float-badge-icon svg { width: 16px; height: 16px; }
+}
+
+/* Small mobile */
+@media (max-width: 400px) {
+  .phone-frame { width: 220px; height: 450px; }
+  .phone-float-badge {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+  /* Pull the floating badges closer to the phone so they don't clip */
+  .phone-float-badge[style*="inset-inline-start: -10%"] { inset-inline-start: -4% !important; }
+  .phone-float-badge[style*="inset-inline-end: -14%"] { inset-inline-end: -4% !important; }
+  .phone-float-badge[style*="inset-inline-start: -8%"] { inset-inline-start: -2% !important; }
+}
+
+/* Extra small */
+@media (max-width: 360px) {
+  .phone-frame { width: 200px; height: 420px; }
 }
 
 /* ============================================
