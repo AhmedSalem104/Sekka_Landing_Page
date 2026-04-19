@@ -312,12 +312,6 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
   to { stroke-dashoffset: -50; }
 }
 
-.road-pin {
-  animation: float 2.4s ease-in-out infinite;
-  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
-  transform-origin: bottom center;
-}
-.road-pin.end { animation-delay: 1.2s; }
 
 /* ============================================
    Feature Cards
