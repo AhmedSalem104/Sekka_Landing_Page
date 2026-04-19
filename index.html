@@ -521,21 +521,26 @@
         <!-- Realistic Delivery Scooter —
              Primary: colored SVG emoji from iconify CDN (Noto pack)
              Fallback: system emoji text rendered by OS emoji font
-             (browser shows the text underneath if the image fails to load) -->
+             The whole graphic is flipped horizontally (scale -1,1) so the
+             scooter faces the direction of travel (left→right) instead of
+             the emoji's default left-facing pose. -->
         <g id="scooter-sprite">
-          <!-- Soft ground shadow -->
+          <!-- Soft ground shadow (not flipped so it stays natural) -->
           <ellipse cx="0" cy="30" rx="32" ry="3.5" fill="#000" opacity="0.3"/>
           <ellipse cx="0" cy="30" rx="26" ry="1.8" fill="#000" opacity="0.35"/>
 
-          <!-- Fallback: native emoji scooter (visible if the image below doesn't load) -->
-          <text x="0" y="18" font-size="70" text-anchor="middle"
-                style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Segoe UI Symbol', emoji;">🛵</text>
+          <!-- Horizontally flipped graphic group -->
+          <g transform="scale(-1, 1)">
+            <!-- Fallback: native emoji scooter (visible if the image below doesn't load) -->
+            <text x="0" y="18" font-size="70" text-anchor="middle"
+                  style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Segoe UI Symbol', emoji;">🛵</text>
 
-          <!-- Primary: high-quality colored motor-scooter SVG from iconify -->
-          <image width="90" height="90" x="-45" y="-60"
-                 href="https://api.iconify.design/noto/motor-scooter.svg"
-                 xlink:href="https://api.iconify.design/noto/motor-scooter.svg"
-                 preserveAspectRatio="xMidYMid meet"/>
+            <!-- Primary: high-quality colored motor-scooter SVG from iconify -->
+            <image width="90" height="90" x="-45" y="-60"
+                   href="https://api.iconify.design/noto/motor-scooter.svg"
+                   xlink:href="https://api.iconify.design/noto/motor-scooter.svg"
+                   preserveAspectRatio="xMidYMid meet"/>
+          </g>
 
           <!-- (Old detailed SVG removed — emoji/iconify provides richer realism) -->
           <g style="display:none">
