@@ -14,6 +14,12 @@ $(document).ready(function() {
         // Trigger counter if this reveal has counters inside
         const counters = entry.target.querySelectorAll('.counter');
         counters.forEach(c => animateCounter(c));
+        // Trigger compare bar fill
+        const bars = entry.target.querySelectorAll('.compare-bar-fill[data-fill]');
+        bars.forEach(bar => {
+          const pct = bar.getAttribute('data-fill');
+          setTimeout(() => { bar.style.width = pct + '%'; }, 150);
+        });
         revealObserver.unobserve(entry.target);
       }
     });
@@ -51,10 +57,31 @@ $(document).ready(function() {
 
 
   /* ============================================
-     3. Navbar Scroll Effect
+     3. Navbar Scroll Effect + Scroll-Spy Active Link
      ============================================ */
   const $navbar = $('#navbar');
   const $progress = $('#scroll-progress');
+
+  // Collect sections and their matching nav links
+  const sectionIds = ['home', 'features', 'how', 'testimonials', 'download'];
+  const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
+  const sections = sectionIds
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  function updateActiveLink(scrollTop) {
+    const viewportMid = scrollTop + window.innerHeight * 0.3;
+    let currentId = sectionIds[0];
+    for (const sec of sections) {
+      const top = sec.offsetTop;
+      if (top <= viewportMid) currentId = sec.id;
+    }
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href') || '';
+      const target = href.replace('#', '');
+      link.classList.toggle('active', target === currentId);
+    });
+  }
 
   function onScroll() {
     const scrollTop = $(window).scrollTop();
@@ -69,6 +96,9 @@ $(document).ready(function() {
     // Sticky download on mobile
     if (scrollTop > 400) $('#sticky-download').addClass('visible');
     else $('#sticky-download').removeClass('visible');
+
+    // Update active nav link based on section in view
+    updateActiveLink(scrollTop);
   }
   $(window).on('scroll', onScroll);
   onScroll();
@@ -151,49 +181,43 @@ $(document).ready(function() {
 
 
   /* ============================================
-     7. Typewriter Effect
+     7. Word Rotator (fade-up / fade-down smooth rotator)
      ============================================ */
-  const typewriterEl = document.getElementById('typewriter');
-  if (typewriterEl) {
-    let phrasesKeys = ['hero.typewriter.1', 'hero.typewriter.2', 'hero.typewriter.3', 'hero.typewriter.4'];
-    let phraseIndex = 0, charIndex = 0, isDeleting = false;
+  const rotatorEl = document.getElementById('typewriter');
+  if (rotatorEl) {
+    const phraseKeys = ['hero.typewriter.1', 'hero.typewriter.2', 'hero.typewriter.3', 'hero.typewriter.4'];
+    let idx = 0;
+    let timer = null;
 
-    function getPhrases() {
-      return phrasesKeys.map(k => SekkaI18n.t(k));
+    function renderPhrase(i) {
+      const text = SekkaI18n.t(phraseKeys[i]);
+      rotatorEl.classList.remove('rotate-in');
+      rotatorEl.classList.add('rotate-out');
+      setTimeout(() => {
+        rotatorEl.textContent = text;
+        rotatorEl.classList.remove('rotate-out');
+        rotatorEl.classList.add('rotate-in');
+      }, 420);
     }
 
-    function typeLoop() {
-      const phrases = getPhrases();
-      const current = phrases[phraseIndex];
-      if (isDeleting) {
-        typewriterEl.textContent = current.substring(0, charIndex--);
-        if (charIndex < 0) {
-          isDeleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          setTimeout(typeLoop, 250);
-          return;
-        }
-        setTimeout(typeLoop, 40);
-      } else {
-        typewriterEl.textContent = current.substring(0, charIndex++);
-        if (charIndex > current.length) {
-          isDeleting = true;
-          setTimeout(typeLoop, 1800);
-          return;
-        }
-        setTimeout(typeLoop, 80);
-      }
+    function startRotator() {
+      // Initial phrase
+      rotatorEl.textContent = SekkaI18n.t(phraseKeys[0]);
+      rotatorEl.classList.add('rotate-in');
+
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => {
+        idx = (idx + 1) % phraseKeys.length;
+        renderPhrase(idx);
+      }, 2800);
     }
 
-    // Restart on language change
     document.addEventListener('sekka:langchange', () => {
-      charIndex = 0;
-      isDeleting = false;
-      phraseIndex = 0;
-      typewriterEl.textContent = '';
+      idx = 0;
+      startRotator();
     });
 
-    setTimeout(typeLoop, 800);
+    setTimeout(startRotator, 500);
   }
 
 

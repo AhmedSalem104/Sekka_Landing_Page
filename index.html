@@ -77,11 +77,8 @@
 
       <!-- Logo -->
       <a href="#home" class="flex items-center gap-3 group">
-        <img src="assets/logo.png" alt="Sekka Logo" class="logo-img h-10 w-10 rounded-xl object-contain transition-transform duration-300">
-        <span class="hidden sm:inline text-xl font-black text-headline dark:text-white">
-          <span class="gradient-text">سِكّة</span>
-          <span class="text-sm text-caption font-medium ms-1" data-i18n="hero.badge">تطبيق مصري</span>
-        </span>
+        <img src="assets/logo-light.jpeg" alt="Sekka" class="logo-img h-11 rounded-xl object-contain transition-transform duration-300 dark:hidden">
+        <img src="assets/logo-dark.jpeg" alt="Sekka" class="logo-img h-11 rounded-xl object-contain transition-transform duration-300 hidden dark:block">
       </a>
 
       <!-- Desktop Links -->
@@ -132,8 +129,8 @@
   <aside id="mobile-drawer" class="mobile-drawer">
     <div class="flex items-center justify-between mb-10">
       <div class="flex items-center gap-2">
-        <img src="assets/logo.png" alt="Logo" class="h-10 w-10 rounded-xl">
-        <span class="text-xl font-black gradient-text">سِكّة</span>
+        <img src="assets/logo-light.jpeg" alt="Sekka" class="h-10 rounded-xl object-contain dark:hidden">
+        <img src="assets/logo-dark.jpeg" alt="Sekka" class="h-10 rounded-xl object-contain hidden dark:block">
       </div>
       <button id="drawer-close" class="icon-btn" aria-label="Close">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,14 +165,6 @@
 
         <!-- Left: Text -->
         <div class="text-center lg:text-start order-2 lg:order-1">
-          <div class="reveal reveal-right inline-flex items-center gap-2 bg-primary-100 dark:bg-primary/10 text-primary-600 dark:text-primary px-4 py-2 rounded-full text-sm font-bold mb-6">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            <span data-i18n="hero.badge">تطبيق مصري 100% للسائقين</span>
-          </div>
-
           <h1 class="reveal text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight mb-4 text-headline dark:text-white">
             <span data-i18n="hero.title1">شريك شغلك</span>
             <br>
@@ -238,23 +227,37 @@
 
             <!-- Floating Badges -->
             <div class="phone-float-badge" style="top: 8%; inset-inline-start: -10%; animation-delay: 0.3s;">
-              <span class="text-2xl">⭐</span>
+              <span class="float-badge-icon" style="background: linear-gradient(135deg, #FFF0E6, #FFD9BD); color: #FC5D01;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/>
+                </svg>
+              </span>
               <div>
-                <div class="text-lg leading-none" data-i18n="hero.badge.rating">4.9</div>
+                <div class="text-lg leading-none font-black" data-i18n="hero.badge.rating">4.9</div>
                 <div class="text-xs text-caption font-medium" data-i18n="hero.badge.rating.label">تقييم السائقين</div>
               </div>
             </div>
             <div class="phone-float-badge" style="top: 50%; inset-inline-end: -14%; animation-delay: 1s;">
-              <span class="text-2xl">🚀</span>
+              <span class="float-badge-icon" style="background: linear-gradient(135deg, #C6F6D5, #9AE6B4); color: #38A169;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14 7h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
               <div>
-                <div class="text-lg leading-none text-success" data-i18n="hero.badge.orders">+18</div>
+                <div class="text-lg leading-none font-black text-success" data-i18n="hero.badge.orders">+18</div>
                 <div class="text-xs text-caption font-medium" data-i18n="hero.badge.orders.label">طلب يومياً</div>
               </div>
             </div>
             <div class="phone-float-badge" style="bottom: 14%; inset-inline-start: -8%; animation-delay: 1.6s;">
-              <span class="text-2xl">⏱️</span>
+              <span class="float-badge-icon" style="background: linear-gradient(135deg, #FFF0E6, #FFD9BD); color: #FC5D01;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </span>
               <div>
-                <div class="text-lg leading-none" style="color:#FC5D01;" data-i18n="hero.badge.hours">-3</div>
+                <div class="text-lg leading-none font-black" style="color:#FC5D01;" data-i18n="hero.badge.hours">-3</div>
                 <div class="text-xs text-caption font-medium" data-i18n="hero.badge.hours.label">ساعات توفير</div>
               </div>
             </div>
@@ -269,7 +272,7 @@
                       <div class="app-ui-greeting" data-i18n="phone.greeting">أهلاً يا أحمد 👋</div>
                       <div class="app-ui-title" data-i18n="phone.title">يوم جديد في سكّة</div>
                     </div>
-                    <img src="assets/logo.png" alt="" class="w-8 h-8 rounded-lg">
+                    <img src="assets/logo-light.jpeg" alt="" class="h-8 rounded-lg object-contain">
                   </div>
 
                   <!-- Stats -->
@@ -378,25 +381,82 @@
           <circle cx="0" cy="20" r="14" fill="#38A169"/>
           <circle cx="0" cy="20" r="6" fill="#fff"/>
         </g>
-        <!-- Scooter (animated along the road via SMIL) -->
+        <!-- Realistic Delivery Scooter (animated along road via SMIL) -->
         <g id="scooter-sprite">
-          <g transform="translate(-32, -44) scale(2)">
-            <!-- Delivery box -->
-            <rect x="4" y="-2" width="9" height="8" rx="1.5" fill="#D94E00"/>
-            <rect x="5" y="-1" width="7" height="6" rx="0.8" fill="#FC5D01"/>
-            <rect x="7" y="1" width="3" height="1" fill="#fff" opacity="0.6"/>
-            <!-- Body -->
-            <rect x="8" y="4" width="18" height="12" rx="3" fill="#FC5D01"/>
-            <rect x="10" y="6" width="14" height="6" rx="1" fill="#fff" opacity="0.35"/>
-            <!-- Handlebars/frame -->
-            <path d="M 4 16 Q 4 12 8 12 L 26 12 Q 30 12 30 16" stroke="#2D3748" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Wheels -->
-            <circle cx="7" cy="18" r="4.2" fill="#2D3748"/>
-            <circle cx="7" cy="18" r="1.8" fill="#FC5D01"/>
-            <circle cx="27" cy="18" r="4.2" fill="#2D3748"/>
-            <circle cx="27" cy="18" r="1.8" fill="#FC5D01"/>
+          <g transform="translate(-36, -40) scale(1.7)">
+            <!-- Motion lines (behind) -->
+            <path d="M -4 15 L 0 15" stroke="#FC5D01" stroke-width="0.9" stroke-linecap="round" opacity="0.7"/>
+            <path d="M -6 18 L -1 18" stroke="#FC5D01" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+            <path d="M -5 21 L -1 21" stroke="#FC5D01" stroke-width="0.9" stroke-linecap="round" opacity="0.4"/>
+
+            <!-- Ground shadow -->
+            <ellipse cx="20" cy="26.5" rx="17" ry="1.3" fill="#000" opacity="0.18"/>
+
+            <!-- Delivery box on back (with S logo) -->
+            <g transform="translate(5, -6)">
+              <rect x="0" y="0" width="10" height="10" rx="1.2" fill="#2D3748"/>
+              <rect x="0.7" y="0.7" width="8.6" height="8.6" rx="0.8" fill="#FC5D01"/>
+              <rect x="0" y="4.3" width="10" height="1.4" fill="#2D3748"/>
+              <circle cx="5" cy="5" r="2" fill="#FFFFFF"/>
+              <text x="5" y="6.4" font-size="3.2" font-weight="900" fill="#FC5D01" text-anchor="middle" font-family="Arial, sans-serif">S</text>
+            </g>
+
+            <!-- Rider silhouette -->
+            <g transform="translate(20, -2)">
+              <path d="M 0 3 Q 0 -0.5 3 -0.5 Q 6 -0.5 6 3 L 6 5 Q 3 6 0 5 Z" fill="#1A202C"/>
+              <path d="M 0.8 3.3 Q 3 2.4 5.2 3.3 L 5.2 4.4 Q 3 4.6 0.8 4.4 Z" fill="#475569"/>
+              <path d="M -1 6 L 7 6 L 8.3 12 L -2.3 12 Z" fill="#334155"/>
+              <path d="M 7 7 L 11 8.5" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+            </g>
+
+            <!-- Scooter body (Vespa curve) -->
+            <path d="M 8 11 C 5.5 11 3 13.5 3 18 L 5.5 20.5 L 30 20.5 Q 33 20.5 33.5 16.5 Q 34 12 28.5 10.5 L 22 10.5 Q 15 9.5 8 11 Z" fill="#FC5D01"/>
+
+            <!-- Body highlight -->
+            <path d="M 10 12 C 7.5 12 5 14 5 17 L 6.5 18.5 L 28.5 18.5 Q 30.5 18.5 31 16 Q 31.5 13 27 12 L 22 12 Q 15.5 11 10 12 Z" fill="#FF8534" opacity="0.55"/>
+
+            <!-- Dark strip underneath body -->
+            <path d="M 5 19.5 L 33 19.5 L 32 21 L 6 21 Z" fill="#D94E00"/>
+
+            <!-- Seat -->
+            <path d="M 16 9.5 L 27 9.5 Q 28 9.5 28 10.5 L 28 11.5 L 16 11.5 Z" fill="#1A202C"/>
+
+            <!-- Windshield / fairing -->
+            <path d="M 29 10.5 Q 32 8 34 10 Q 34.5 11 34.5 13 L 29 13 Z" fill="#CBD5E1" opacity="0.5" stroke="#2D3748" stroke-width="0.35"/>
+            <path d="M 30 10.5 Q 32 9 33.5 10.5 L 33.5 12 L 30 12 Z" fill="#F1F5F9" opacity="0.45"/>
+
+            <!-- Handlebars -->
+            <path d="M 32 10 L 37 7.5" stroke="#1A202C" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="37" cy="7.5" r="0.8" fill="#1A202C"/>
+
+            <!-- Mirror -->
+            <line x1="30" y1="8" x2="30" y2="5" stroke="#1A202C" stroke-width="0.6"/>
+            <ellipse cx="30" cy="4.5" rx="1.1" ry="0.9" fill="#1A202C"/>
+
+            <!-- Headlight with beam -->
+            <path d="M 38 11.5 L 43 10.5 L 43 14 L 38 13.5 Z" fill="#FCD34D" opacity="0.4"/>
+            <circle cx="35.5" cy="13" r="1.7" fill="#2D3748"/>
+            <circle cx="35.5" cy="13" r="1.2" fill="#FEF08A"/>
+            <circle cx="35.5" cy="13" r="0.6" fill="#FFFFFF"/>
+
+            <!-- Front wheel -->
+            <circle cx="33" cy="22.5" r="4" fill="#111827"/>
+            <circle cx="33" cy="22.5" r="3.2" fill="#2D3748"/>
+            <circle cx="33" cy="22.5" r="1.6" fill="#94A3B8"/>
+            <circle cx="33" cy="22.5" r="0.6" fill="#1A202C"/>
+            <path d="M 33 19.3 L 33 25.7 M 29.8 22.5 L 36.2 22.5 M 30.8 20.3 L 35.2 24.7 M 35.2 20.3 L 30.8 24.7" stroke="#64748B" stroke-width="0.3" opacity="0.7"/>
+
+            <!-- Rear wheel -->
+            <circle cx="8" cy="22.5" r="4" fill="#111827"/>
+            <circle cx="8" cy="22.5" r="3.2" fill="#2D3748"/>
+            <circle cx="8" cy="22.5" r="1.6" fill="#94A3B8"/>
+            <circle cx="8" cy="22.5" r="0.6" fill="#1A202C"/>
+            <path d="M 8 19.3 L 8 25.7 M 4.8 22.5 L 11.2 22.5 M 5.8 20.3 L 10.2 24.7 M 10.2 20.3 L 5.8 24.7" stroke="#64748B" stroke-width="0.3" opacity="0.7"/>
+
+            <!-- Exhaust pipe -->
+            <rect x="2" y="19" width="5" height="1.6" rx="0.8" fill="#64748B"/>
           </g>
-          <animateMotion dur="7s" repeatCount="indefinite" rotate="auto"
+          <animateMotion dur="8s" repeatCount="indefinite" rotate="auto"
             path="M 20 100 Q 300 20 600 100 T 1180 100"/>
         </g>
       </svg>
@@ -405,84 +465,193 @@
 
 
   <!-- ============================================
-       PROBLEM vs SOLUTION
+       PROBLEM vs SOLUTION  (redesigned — stat-bar comparison)
        ============================================ -->
-  <section class="py-20 lg:py-28 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16">
-        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white" data-i18n="compare.title">
-          الفرق بيبان في اليوم الأول
+  <section class="py-20 lg:py-28 relative overflow-hidden">
+    <!-- subtle grid bg -->
+    <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.06] pointer-events-none"
+         style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white">
+          <span data-i18n="compare.title">الفرق بيبان في اليوم الأول</span>
         </h2>
         <p class="reveal text-lg text-body dark:text-gray-300" data-i18n="compare.subtitle" data-delay="100">
           شوف يوم السائق بدون سكّة ومعاها
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
-        <!-- Bad Card -->
-        <div class="reveal reveal-right compare-card bad">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-14 h-14 rounded-full bg-error/20 flex items-center justify-center text-3xl">😓</div>
-            <div>
-              <h3 class="text-2xl font-black text-error" data-i18n="compare.bad.title">بدون سكّة</h3>
-              <p class="text-sm text-body" data-i18n="compare.bad.sub">يوم مشتت ومتعب</p>
+      <!-- Compare Header -->
+      <div class="reveal grid grid-cols-[1fr_auto_1fr] items-center gap-4 mb-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-error/10 border border-error/20 text-error font-black">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M9.17 14.83l5.66-5.66M14.83 14.83L9.17 9.17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <span data-i18n="compare.bad.title">بدون سكّة</span>
+          </div>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#FC5D01] to-[#FF8534] text-white font-black flex items-center justify-center text-sm shadow-lg shadow-primary/40">VS</div>
+        <div class="text-center">
+          <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-success/10 border border-success/20 text-success font-black">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span data-i18n="compare.good.title">مع سكّة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat Rows -->
+      <div class="max-w-4xl mx-auto space-y-5">
+        <!-- Row 1: Orders -->
+        <div class="reveal compare-row" data-delay="100">
+          <div class="compare-row-header">
+            <div class="compare-row-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.17 7.44L12 12.55l8.77-5.08M12 21.61v-9.07" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9.93 2.48l-5.34 2.97c-1.21.67-2.2 2.35-2.2 3.73v5.65c0 1.38.99 3.06 2.2 3.73l5.34 2.97c1.14.63 3.01.63 4.15 0l5.34-2.97c1.21-.67 2.2-2.35 2.2-3.73V9.18c0-1.38-.99-3.06-2.2-3.73l-5.34-2.97c-1.15-.64-3.01-.64-4.15 0z" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+            <span class="compare-row-title" data-i18n="compare.metric.orders">عدد الطلبات اليومي</span>
+          </div>
+          <div class="compare-row-bars">
+            <div class="compare-bar-side">
+              <div class="compare-bar-track">
+                <div class="compare-bar-fill bad" data-fill="40"></div>
+              </div>
+              <span class="compare-bar-value text-error">8 <span class="text-xs font-medium" data-i18n="compare.unit.orders">طلبات</span></span>
+            </div>
+            <div class="compare-bar-side">
+              <div class="compare-bar-track">
+                <div class="compare-bar-fill good" data-fill="90"></div>
+              </div>
+              <span class="compare-bar-value text-success">18 <span class="text-xs font-medium" data-i18n="compare.unit.orders">طلبات</span></span>
             </div>
           </div>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-5 h-5 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 text-xs font-bold">✕</span>
-              <span class="text-body dark:text-gray-300" data-i18n="compare.bad.1">8 طلبات بس في 9 ساعات</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-5 h-5 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 text-xs font-bold">✕</span>
-              <span class="text-body dark:text-gray-300" data-i18n="compare.bad.2">95 كم رايح جاي بدون ترتيب</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-5 h-5 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 text-xs font-bold">✕</span>
-              <span class="text-body dark:text-gray-300" data-i18n="compare.bad.3">3-4 طلبات فاشلة كل يوم</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-5 h-5 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 text-xs font-bold">✕</span>
-              <span class="text-body dark:text-gray-300" data-i18n="compare.bad.4">مش عارف كسبان ولا خسران</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-5 h-5 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 text-xs font-bold">✕</span>
-              <span class="text-body dark:text-gray-300" data-i18n="compare.bad.5">الطلبات مشتتة على 4 أماكن</span>
-            </li>
-          </ul>
         </div>
 
-        <!-- Good Card -->
-        <div class="reveal reveal-left compare-card good">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-14 h-14 rounded-full bg-success/20 flex items-center justify-center text-3xl">🚀</div>
-            <div>
-              <h3 class="text-2xl font-black text-success" data-i18n="compare.good.title">مع سكّة</h3>
-              <p class="text-sm text-body" data-i18n="compare.good.sub">يوم منظم ومربح</p>
+        <!-- Row 2: Distance -->
+        <div class="reveal compare-row" data-delay="200">
+          <div class="compare-row-header">
+            <div class="compare-row-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="5" cy="5" r="2.5" stroke="currentColor" stroke-width="1.7"/>
+                <circle cx="19" cy="19" r="2.5" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M5 7.5v2c0 3 2 5 5 5h4c3 0 5 2 5 5v1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="compare-row-title" data-i18n="compare.metric.distance">المسافة المقطوعة</span>
+          </div>
+          <div class="compare-row-bars">
+            <div class="compare-bar-side">
+              <div class="compare-bar-track">
+                <div class="compare-bar-fill bad" data-fill="95"></div>
+              </div>
+              <span class="compare-bar-value text-error">95 <span class="text-xs font-medium" data-i18n="compare.unit.km">كم</span></span>
+            </div>
+            <div class="compare-bar-side">
+              <div class="compare-bar-track">
+                <div class="compare-bar-fill good" data-fill="48"></div>
+              </div>
+              <span class="compare-bar-value text-success">48 <span class="text-xs font-medium" data-i18n="compare.unit.km">كم</span></span>
             </div>
           </div>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-5 h-5 rounded-full bg-success/20 text-success flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span class="text-body dark:text-gray-300 font-medium" data-i18n="compare.good.1">18 طلب في 8 ساعات بس</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-5 h-5 rounded-full bg-success/20 text-success flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span class="text-body dark:text-gray-300 font-medium" data-i18n="compare.good.2">48 كم بمسار ذكي موفّر</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-5 h-5 rounded-full bg-success/20 text-success flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span class="text-body dark:text-gray-300 font-medium" data-i18n="compare.good.3">صفر طلبات فاشلة تقريباً</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-5 h-5 rounded-full bg-success/20 text-success flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span class="text-body dark:text-gray-300 font-medium" data-i18n="compare.good.4">بتعرف أرباحك لحظة بلحظة</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 w-5 h-5 rounded-full bg-success/20 text-success flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span class="text-body dark:text-gray-300 font-medium" data-i18n="compare.good.5">كل الطلبات في مكان واحد</span>
-            </li>
-          </ul>
+        </div>
+
+        <!-- Row 3: Hours -->
+        <div class="reveal compare-row" data-delay="300">
+          <div class="compare-row-header">
+            <div class="compare-row-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="compare-row-title" data-i18n="compare.metric.hours">ساعات العمل</span>
+          </div>
+          <div class="compare-row-bars">
+            <div class="compare-bar-side">
+              <div class="compare-bar-track">
+                <div class="compare-bar-fill bad" data-fill="90"></div>
+              </div>
+              <span class="compare-bar-value text-error">9 <span class="text-xs font-medium" data-i18n="compare.unit.hrs">ساعات</span></span>
+            </div>
+            <div class="compare-bar-side">
+              <div class="compare-bar-track">
+                <div class="compare-bar-fill good" data-fill="80"></div>
+              </div>
+              <span class="compare-bar-value text-success">8 <span class="text-xs font-medium" data-i18n="compare.unit.hrs">ساعات</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Failed deliveries -->
+        <div class="reveal compare-row" data-delay="400">
+          <div class="compare-row-header">
+            <div class="compare-row-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="M12 9v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <circle cx="12" cy="17.5" r="1" fill="currentColor"/>
+              </svg>
+            </div>
+            <span class="compare-row-title" data-i18n="compare.metric.failed">طلبات فاشلة</span>
+          </div>
+          <div class="compare-row-bars">
+            <div class="compare-bar-side">
+              <div class="compare-bar-track">
+                <div class="compare-bar-fill bad" data-fill="75"></div>
+              </div>
+              <span class="compare-bar-value text-error">3-4</span>
+            </div>
+            <div class="compare-bar-side">
+              <div class="compare-bar-track">
+                <div class="compare-bar-fill good" data-fill="10"></div>
+              </div>
+              <span class="compare-bar-value text-success">0-1</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 5: Earnings visibility -->
+        <div class="reveal compare-row" data-delay="500">
+          <div class="compare-row-header">
+            <div class="compare-row-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.5 13.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="currentColor"/>
+                <path d="M3.5 9c0-2 1.12-3.5 3.5-3.5h10c2.38 0 3.5 1.5 3.5 3.5v6c0 2.2-1.3 3.5-3.5 3.5H7c-2.2 0-3.5-1.3-3.5-3.5V9z" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M17 6l-2-2.5c-1-1-2-1-3-.5L8 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="compare-row-title" data-i18n="compare.metric.earnings">معرفة الأرباح</span>
+          </div>
+          <div class="compare-row-bars">
+            <div class="compare-bar-side">
+              <div class="compare-bar-track compare-bar-tag bad">
+                <span data-i18n="compare.earnings.bad">مش متأكد</span>
+              </div>
+            </div>
+            <div class="compare-bar-side">
+              <div class="compare-bar-track compare-bar-tag good">
+                <span data-i18n="compare.earnings.good">لحظية ودقيقة</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Summary -->
+      <div class="reveal mt-12 text-center" data-delay="600">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10 border border-primary/30">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2v20M2 12h20" stroke="#FC5D01" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="9" stroke="#FC5D01" stroke-width="1.5"/>
+          </svg>
+          <span class="font-black text-lg gradient-text" data-i18n="compare.summary">ضعف الدخل بنص المجهود</span>
         </div>
       </div>
     </div>
@@ -495,14 +664,11 @@
   <section id="features" class="py-20 lg:py-28 bg-gradient-to-b from-background to-white dark:from-[#121212] dark:to-[#1a1a1a] relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
       <div class="text-center mb-16">
-        <div class="reveal inline-block px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary/10 text-primary-600 dark:text-primary font-bold text-sm mb-4" data-i18n="features.tag">
-          إيه اللي يخليك تختار سكّة
-        </div>
-        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white" data-delay="100">
+        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white">
           <span data-i18n="features.title">مميزات مصممة </span>
           <span class="gradient-text" data-i18n="features.title.highlight">للسائق المصري</span>
         </h2>
-        <p class="reveal text-lg text-body dark:text-gray-300 max-w-2xl mx-auto" data-i18n="features.subtitle" data-delay="200">
+        <p class="reveal text-lg text-body dark:text-gray-300 max-w-2xl mx-auto" data-i18n="features.subtitle" data-delay="100">
           كل ميزة محلولة من مشكلة حقيقية بتقابلك كل يوم
         </p>
       </div>
@@ -619,14 +785,11 @@
   <section id="how" class="py-20 lg:py-28 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-16">
-        <div class="reveal inline-block px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary/10 text-primary-600 dark:text-primary font-bold text-sm mb-4" data-i18n="how.tag">
-          3 خطوات بسيطة
-        </div>
-        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white" data-delay="100">
+        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white">
           <span data-i18n="how.title">إزاي سكّة </span>
           <span class="gradient-text" data-i18n="how.title.highlight">بتشتغل</span>
         </h2>
-        <p class="reveal text-lg text-body dark:text-gray-300" data-i18n="how.subtitle" data-delay="200">
+        <p class="reveal text-lg text-body dark:text-gray-300" data-i18n="how.subtitle" data-delay="100">
           من الصبح للمسا بـ 3 خطوات بس
         </p>
       </div>
@@ -638,7 +801,12 @@
         <!-- Step 1 -->
         <div class="reveal timeline-step text-center" data-delay="100">
           <div class="timeline-number mx-auto mb-6">1</div>
-          <div class="text-5xl mb-4">📋</div>
+          <div class="timeline-icon mx-auto mb-4">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 2h8a2 2 0 0 1 2 2v1h1.5a2.5 2.5 0 0 1 2.5 2.5v12a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 19.5v-12A2.5 2.5 0 0 1 4.5 5H6V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
           <h3 class="text-2xl font-black mb-3 text-headline dark:text-white" data-i18n="how.1.title">ضيف الطلبات</h3>
           <p class="text-body dark:text-gray-300" data-i18n="how.1.desc">الصق من الواتساب، أو كلّمه صوتياً، أو اكتب يدوي — براحتك</p>
         </div>
@@ -646,7 +814,13 @@
         <!-- Step 2 -->
         <div class="reveal timeline-step text-center" data-delay="300">
           <div class="timeline-number mx-auto mb-6">2</div>
-          <div class="text-5xl mb-4">🧠</div>
+          <div class="timeline-icon mx-auto mb-4">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3l1.5 4L18 8.5 13.5 10 12 14l-1.5-4L6 8.5 10.5 7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M19 15l.8 2L22 18l-2.2 1-.8 2-.8-2L16 18l2.2-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M5 17l.6 1.5L7 19l-1.4.5L5 21l-.6-1.5L3 19l1.4-.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <h3 class="text-2xl font-black mb-3 text-headline dark:text-white" data-i18n="how.2.title">التطبيق يرتبلك</h3>
           <p class="text-body dark:text-gray-300" data-i18n="how.2.desc">المسار الأذكى، الطلب الأقرب، التوقيت الأمثل — كله بـ AI</p>
         </div>
@@ -654,7 +828,14 @@
         <!-- Step 3 -->
         <div class="reveal timeline-step text-center" data-delay="500">
           <div class="timeline-number mx-auto mb-6">3</div>
-          <div class="text-5xl mb-4">💰</div>
+          <div class="timeline-icon mx-auto mb-4">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 13.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="currentColor"/>
+              <path d="M3.5 9c0-2 1.12-3.5 3.5-3.5h10c2.38 0 3.5 1.5 3.5 3.5v6c0 2.2-1.3 3.5-3.5 3.5H7c-2.2 0-3.5-1.3-3.5-3.5V9z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M17 6l-2-2.5c-1-1-2-1-3-.5L8 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M14 21l-2-2 2-2M18 17l2 2-2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+            </svg>
+          </div>
           <h3 class="text-2xl font-black mb-3 text-headline dark:text-white" data-i18n="how.3.title">توصل وتكسب أكتر</h3>
           <p class="text-body dark:text-gray-300" data-i18n="how.3.desc">+10 طلبات يومياً، محاسبة دقيقة، وأنت مرتاح البال</p>
         </div>
@@ -718,14 +899,11 @@
   <section id="testimonials" class="py-20 lg:py-28 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-16">
-        <div class="reveal inline-block px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary/10 text-primary-600 dark:text-primary font-bold text-sm mb-4" data-i18n="testimonials.tag">
-          آراء حقيقية
-        </div>
-        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white" data-delay="100">
+        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white">
           <span data-i18n="testimonials.title">السائقين </span>
           <span class="gradient-text" data-i18n="testimonials.title.highlight">بيحبوا سكّة</span>
         </h2>
-        <p class="reveal text-lg text-body dark:text-gray-300" data-i18n="testimonials.subtitle" data-delay="200">
+        <p class="reveal text-lg text-body dark:text-gray-300" data-i18n="testimonials.subtitle" data-delay="100">
           شوف إيه اللي بيقولوه سائقينا عن التطبيق
         </p>
       </div>
@@ -739,7 +917,13 @@
               <div class="text-xs text-caption" data-i18n="t.1.role">سائق مستقل — القاهرة</div>
             </div>
           </div>
-          <div class="text-warning mb-3 text-lg" data-i18n="t.rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars mb-3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+          </div>
           <p class="text-body dark:text-gray-300 leading-relaxed" data-i18n="t.1.quote">
             وفرت ساعتين في اليوم، وبعرف كسبي بالظبط. ده بقى شريك شغلي الحقيقي.
           </p>
@@ -753,7 +937,13 @@
               <div class="text-xs text-caption" data-i18n="t.2.role">سائق طلبات — المعادي</div>
             </div>
           </div>
-          <div class="text-warning mb-3 text-lg" data-i18n="t.rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars mb-3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+          </div>
           <p class="text-body dark:text-gray-300 leading-relaxed" data-i18n="t.2.quote">
             النسخ من الواتساب غيّر حياتي. بعمل 30 طلب في اليوم بدل 15، ومفيش تعب.
           </p>
@@ -767,7 +957,13 @@
               <div class="text-xs text-caption" data-i18n="t.3.role">سائقة مستقلة — الإسكندرية</div>
             </div>
           </div>
-          <div class="text-warning mb-3 text-lg" data-i18n="t.rating">⭐⭐⭐⭐⭐</div>
+          <div class="stars mb-3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.07 2.74c.56-1.1 2.12-1.1 2.68 0l2.31 4.54 5.04.73c1.22.18 1.71 1.68.83 2.54l-3.65 3.56.86 5.03c.21 1.22-1.07 2.14-2.16 1.57L12 18.36l-4.5 2.36c-1.09.57-2.37-.35-2.16-1.57l.86-5.03-3.65-3.56c-.88-.86-.39-2.36.83-2.54l5.04-.73 2.31-4.54z"/></svg>
+          </div>
           <p class="text-body dark:text-gray-300 leading-relaxed" data-i18n="t.3.quote">
             لما بسوق، بكلّمه بس وهو بيسجّل كل حاجة. أمان + سرعة = سكّة.
           </p>
@@ -782,10 +978,7 @@
        ============================================ -->
   <section id="download" class="download-section py-20 lg:py-28 relative">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-      <div class="reveal inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary font-bold text-sm mb-6 border border-primary/30" data-i18n="cta.tag">
-        ابدأ دلوقتي
-      </div>
-      <h2 class="reveal text-3xl sm:text-4xl lg:text-6xl font-black text-white mb-4 leading-tight" data-delay="100">
+      <h2 class="reveal text-3xl sm:text-4xl lg:text-6xl font-black text-white mb-4 leading-tight">
         <span data-i18n="cta.title">جاهز تبدأ يومك مع </span>
         <span class="gradient-text" data-i18n="cta.title.highlight">سِكّة؟</span>
       </h2>
@@ -814,8 +1007,14 @@
         </a>
       </div>
 
-      <p class="reveal text-gray-400 text-sm" data-i18n="cta.note" data-delay="400">
-        🎁 مجاني للسائقين — مفيش اشتراكات مخفية
+      <p class="reveal text-gray-400 text-sm inline-flex items-center gap-2 justify-center" data-delay="400">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-primary">
+          <path d="M12 7v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M20 12v7.5c0 1.5-1 2.5-2.5 2.5h-11C5 22 4 21 4 19.5V12" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M2.5 7h19c1 0 1.5.5 1.5 1.5v2c0 1-.5 1.5-1.5 1.5h-19C1.5 12 1 11.5 1 10.5v-2C1 7.5 1.5 7 2.5 7z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M11.35 7h-4c-1 0-2-1-2-2s1-2 2-2c2.8 0 4.35 4 4.35 4zM12.65 7h4c1 0 2-1 2-2s-1-2-2-2c-2.8 0-4.35 4-4.35 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        <span data-i18n="cta.note">مجاني للسائقين — مفيش اشتراكات مخفية</span>
       </p>
     </div>
   </section>
@@ -830,16 +1029,13 @@
         <!-- About -->
         <div>
           <div class="flex items-center gap-3 mb-4">
-            <img src="assets/logo.png" alt="Sekka" class="w-11 h-11 rounded-xl">
-            <span class="text-2xl font-black text-white">
-              <span class="gradient-text">سِكّة</span>
-            </span>
+            <img src="assets/logo-dark.jpeg" alt="Sekka" class="h-12 rounded-xl object-contain">
           </div>
           <p class="text-gray-400 text-sm leading-relaxed mb-4" data-i18n="footer.about.desc">
             شريك شغلك في الديليفري. بنخلي يومك أسهل، أسرع، وأكتر ربحاً.
           </p>
           <div class="flex gap-3">
-            <a href="#" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=61570710574483" target="_blank" rel="noopener" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="Facebook">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
             <a href="#" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="Instagram">
@@ -875,13 +1071,13 @@
                 <path d="M17 20H7c-3 0-5-1.5-5-5V9c0-3.5 2-5 5-5h10c3 0 5 1.5 5 5v6c0 3.5-2 5-5 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
                 <path d="M17 9.5l-3.13 2.5c-1.03.82-2.72.82-3.75 0L7 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               </svg>
-              <a href="mailto:support@sekka.app" class="hover:text-primary" data-i18n="footer.contact.email">support@sekka.app</a>
+              <a href="mailto:appsekka@gmail.com" class="hover:text-primary" data-i18n="footer.contact.email">appsekka@gmail.com</a>
             </li>
             <li class="flex items-center gap-2 text-gray-400">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21.97 18.33a2.54 2.54 0 0 1-.25 1.09c-.17.35-.4.69-.71 1-.51.56-1.07.97-1.71 1.22-.63.25-1.31.38-2.04.38-1.07 0-2.21-.25-3.41-.77a18.4 18.4 0 0 1-3.6-2.08 29.9 29.9 0 0 1-5.24-5.23 18 18 0 0 1-2.06-3.58C2.42 9.18 2.17 8.04 2.17 6.96c0-.71.12-1.38.37-2 .25-.64.65-1.22 1.21-1.74A3.08 3.08 0 0 1 5.93 2.33c.31 0 .61.07.88.2.28.12.53.32.72.59l2.48 3.5c.19.27.33.52.43.74.09.23.15.46.15.66 0 .25-.07.5-.22.74-.14.24-.35.49-.61.74L8.7 9.38a.58.58 0 0 0-.17.43c0 .09.01.17.03.26.03.09.06.16.09.23.18.34.49.77.93 1.3.45.52.94 1.06 1.45 1.6.54.54 1.07 1.03 1.61 1.48.53.44.97.74 1.33.92.05.02.11.04.18.07.08.03.16.04.25.04.17 0 .31-.06.43-.18l.78-.77a3 3 0 0 1 .78-.61c.24-.15.49-.22.75-.22.2 0 .42.05.66.14.24.1.48.23.75.42l3.55 2.52c.26.19.45.41.56.68.1.27.16.54.16.83z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
               </svg>
-              <a href="tel:01000000000" class="hover:text-primary" data-i18n="footer.contact.phone">01000000000</a>
+              <a href="tel:01015819700" class="hover:text-primary" data-i18n="footer.contact.phone">01015819700</a>
             </li>
             <li class="flex items-center gap-2 text-gray-400">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -933,10 +1129,9 @@
        ============================================ -->
   <div id="sticky-download" class="sticky-download">
     <div class="flex items-center gap-2">
-      <img src="assets/logo.png" alt="" class="w-10 h-10 rounded-xl bg-white/20 p-1">
+      <img src="assets/logo-dark.jpeg" alt="" class="h-10 rounded-xl object-contain bg-white/15 p-1">
       <div>
         <div class="font-black leading-tight" data-i18n="sticky.text">حمّل التطبيق</div>
-        <div class="text-xs opacity-90">سِكّة</div>
       </div>
     </div>
     <div class="flex gap-2">

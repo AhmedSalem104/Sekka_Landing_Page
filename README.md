@@ -488,7 +488,7 @@ translations.fr = {
 
 *This project is owned by the **Sekka** team. All rights reserved.*
 
-للاستفسار عن الترخيص للاستخدام: [support@sekka.app](mailto:support@sekka.app)
+للاستفسار عن الترخيص للاستخدام: [appsekka@gmail.com](mailto:appsekka@gmail.com)
 
 ---
 
@@ -518,11 +518,11 @@ translations.fr = {
 
 **فريق سِكّة — Sekka Team**
 
-📧 **Email:** [support@sekka.app](mailto:support@sekka.app)
-📱 **Phone:** 01000000000
+📧 **Email:** [appsekka@gmail.com](mailto:appsekka@gmail.com)
+📱 **Phone:** 01015819700
 📍 **Location:** القاهرة، مصر — Cairo, Egypt
 
-[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](#)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/profile.php?id=61570710574483)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](#)
 [![TikTok](https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white)](#)
 [![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](#)

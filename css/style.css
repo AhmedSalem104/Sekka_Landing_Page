@@ -274,14 +274,23 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(252, 93, 1, 0.15);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-weight: 700;
   font-size: 13px;
   z-index: 20;
   animation: floatSlow 5s ease-in-out infinite;
 }
-
 .dark .phone-float-badge { background: #262626; color: #fff; }
+
+.float-badge-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
 /* ============================================
    Road Animation
@@ -359,26 +368,111 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
 .dark .feature-icon-wrap { background: linear-gradient(135deg, #3a2416, #4a2d1c); color: #FF8534; }
 
 /* ============================================
-   Problem vs Solution
+   Problem vs Solution — Stat Bar Compare
    ============================================ */
-.compare-card {
-  padding: 32px;
-  border-radius: 24px;
-  border: 2px solid;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+.compare-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px 24px;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
-.compare-card:hover { transform: translateY(-6px); }
-.compare-card.bad {
-  background: linear-gradient(135deg, #FFF5F5, #FFE5E5);
-  border-color: #FEB2B2;
+.compare-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -16px rgba(252, 93, 1, 0.25);
+  border-color: rgba(252, 93, 1, 0.3);
 }
-.compare-card.good {
-  background: linear-gradient(135deg, #F0FFF4, #D4F4E0);
-  border-color: #9AE6B4;
-  box-shadow: 0 20px 40px -10px rgba(56, 161, 105, 0.25);
+.dark .compare-row { background: #1E1E1E; border-color: #2D3748; }
+
+.compare-row-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
 }
-.dark .compare-card.bad { background: linear-gradient(135deg, #2d1616, #3a1d1d); border-color: #744040; }
-.dark .compare-card.good { background: linear-gradient(135deg, #162d22, #1d3a2a); border-color: #406748; }
+.compare-row-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FFF0E6, #FFD9BD);
+  color: #FC5D01;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.dark .compare-row-icon { background: linear-gradient(135deg, #3a2416, #4a2d1c); color: #FF8534; }
+.compare-row-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--headline);
+}
+.dark .compare-row-title { color: #F7FAFC; }
+
+.compare-row-bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.compare-bar-side {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.compare-bar-track {
+  flex: 1;
+  height: 12px;
+  border-radius: 100px;
+  background: #F1F5F9;
+  overflow: hidden;
+  position: relative;
+}
+.dark .compare-bar-track { background: #2D3748; }
+
+.compare-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  width: 0;
+  transition: width 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.compare-bar-fill.bad {
+  background: linear-gradient(90deg, #FEB2B2, #E53E3E);
+  box-shadow: 0 2px 8px rgba(229, 62, 62, 0.3);
+}
+.compare-bar-fill.good {
+  background: linear-gradient(90deg, #9AE6B4, #38A169);
+  box-shadow: 0 2px 8px rgba(56, 161, 105, 0.3);
+}
+
+.compare-bar-value {
+  font-size: 18px;
+  font-weight: 900;
+  min-width: 56px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.compare-bar-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  background: transparent;
+  height: auto;
+  width: 100%;
+}
+.compare-bar-tag.bad { background: rgba(229, 62, 62, 0.12); color: #E53E3E; border: 1px dashed rgba(229, 62, 62, 0.4); }
+.compare-bar-tag.good { background: rgba(56, 161, 105, 0.12); color: #38A169; border: 1px solid rgba(56, 161, 105, 0.4); }
+
+@media (max-width: 640px) {
+  .compare-row-bars { grid-template-columns: 1fr; gap: 10px; }
+  .compare-bar-value { font-size: 16px; min-width: 52px; }
+}
 
 /* ============================================
    Stats Section
@@ -422,6 +516,25 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
 }
 .timeline-step:hover .timeline-number { transform: scale(1.1) rotate(8deg); }
 
+.timeline-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #FFF0E6, #FFD9BD);
+  color: #FC5D01;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.dark .timeline-icon { background: linear-gradient(135deg, #3a2416, #4a2d1c); color: #FF8534; }
+.timeline-step:hover .timeline-icon {
+  transform: scale(1.08) rotate(-6deg);
+  background: linear-gradient(135deg, #FC5D01, #FF8534);
+  color: #fff;
+  box-shadow: 0 20px 40px -10px rgba(252, 93, 1, 0.45);
+}
+
 /* ============================================
    Testimonials
    ============================================ */
@@ -433,6 +546,13 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
 }
+
+.stars {
+  display: inline-flex;
+  gap: 2px;
+  color: #ECC94B;
+}
+.stars svg { width: 18px; height: 18px; filter: drop-shadow(0 2px 4px rgba(236, 201, 75, 0.3)); }
 .testimonial-card::before {
   content: '"';
   position: absolute;
@@ -572,18 +692,23 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
   color: var(--body);
   font-weight: 500;
 }
+.dark .nav-link { color: #A0AEC0; }
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -4px;
   inset-inline-start: 0;
   width: 0;
-  height: 2px;
+  height: 3px;
+  border-radius: 100px;
   background: linear-gradient(90deg, #FC5D01, #FF8534);
-  transition: width 0.3s ease;
+  transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .nav-link:hover { color: #FC5D01; }
 .nav-link:hover::after { width: 100%; }
+.nav-link.active { color: #FC5D01; font-weight: 700; }
+.nav-link.active::after { width: 100%; }
+.dark .nav-link.active { color: #FF8534; }
 
 /* ============================================
    Icon Button
@@ -806,13 +931,27 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
 }
 
 /* ============================================
-   Typewriter
+   Word Rotator (smooth fade/slide between phrases)
    ============================================ */
 .typewriter {
-  border-inline-end: 3px solid #FC5D01;
-  animation: blink 1s step-end infinite;
   display: inline-block;
   min-height: 1.2em;
+  min-width: 10ch;
+  position: relative;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 0.45s ease;
+  will-change: transform, opacity;
+}
+.typewriter.rotate-in {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+.typewriter.rotate-out {
+  opacity: 0;
+  transform: translateY(-12px);
+  filter: blur(4px);
 }
 
 /* ============================================
