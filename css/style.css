@@ -312,6 +312,18 @@ body.rtl { font-family: 'Tajawal', sans-serif; }
   to { stroke-dashoffset: -50; }
 }
 
+/* Location pins at road start/end */
+.road-pin {
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.3));
+  transform-origin: center bottom;
+  animation: pinBob 2.8s ease-in-out infinite;
+}
+.road-pin-end { animation-delay: 1.4s; }
+@keyframes pinBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
 
 /* ============================================
    Feature Cards

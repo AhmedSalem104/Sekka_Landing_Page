@@ -365,7 +365,7 @@
 
     <!-- Road SVG at bottom of hero — realistic asphalt with lanes -->
     <div id="road-section" class="relative mt-16 lg:mt-24 max-w-7xl mx-auto px-4">
-      <svg viewBox="0 0 1200 200" class="road-svg" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 1200 200" class="road-svg" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
           <!-- Asphalt gradient for depth -->
           <linearGradient id="roadGrad" x1="0" y1="0" x2="0" y2="1">
@@ -480,9 +480,65 @@
               stroke="#FBD38D" stroke-width="4.5" stroke-dasharray="28 22"
               stroke-linecap="round" fill="none"/>
 
-        <!-- Realistic Delivery Scooter with gradients (animated along road) -->
+        <!-- START location pin (pickup) — orange teardrop with inner dot -->
+        <g transform="translate(20, 52)">
+          <g class="road-pin road-pin-start">
+            <!-- ground shadow under pin -->
+            <ellipse cx="0" cy="46" rx="10" ry="2.5" fill="#000" opacity="0.25"/>
+            <!-- pin body -->
+            <path d="M 0 0 C -14 0 -19 10 -19 18 C -19 28 0 48 0 48 C 0 48 19 28 19 18 C 19 10 14 0 0 0 Z"
+                  fill="#FC5D01" stroke="#B84200" stroke-width="1.8"/>
+            <!-- inner highlight -->
+            <path d="M -8 6 C -10 6 -13 9 -13 13 L -6 13 Z" fill="#FFFFFF" opacity="0.25"/>
+            <!-- inner circle -->
+            <circle cx="0" cy="18" r="8" fill="#FFFFFF"/>
+            <circle cx="0" cy="18" r="4" fill="#FC5D01"/>
+            <!-- Label above pin -->
+            <g transform="translate(0, -10)">
+              <rect x="-20" y="-16" width="40" height="16" rx="8" fill="#FC5D01"/>
+              <text x="0" y="-4" font-size="10" font-weight="700" fill="#fff" text-anchor="middle" font-family="Tajawal, sans-serif">بداية</text>
+            </g>
+          </g>
+        </g>
+
+        <!-- END location pin (delivery) — green teardrop with checkmark -->
+        <g transform="translate(1180, 52)">
+          <g class="road-pin road-pin-end">
+            <ellipse cx="0" cy="46" rx="10" ry="2.5" fill="#000" opacity="0.25"/>
+            <path d="M 0 0 C -14 0 -19 10 -19 18 C -19 28 0 48 0 48 C 0 48 19 28 19 18 C 19 10 14 0 0 0 Z"
+                  fill="#38A169" stroke="#276749" stroke-width="1.8"/>
+            <path d="M -8 6 C -10 6 -13 9 -13 13 L -6 13 Z" fill="#FFFFFF" opacity="0.25"/>
+            <circle cx="0" cy="18" r="8" fill="#FFFFFF"/>
+            <!-- checkmark -->
+            <path d="M -4 18 L -1 21 L 4.5 14" stroke="#38A169" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <g transform="translate(0, -10)">
+              <rect x="-24" y="-16" width="48" height="16" rx="8" fill="#38A169"/>
+              <text x="0" y="-4" font-size="10" font-weight="700" fill="#fff" text-anchor="middle" font-family="Tajawal, sans-serif">الوصول</text>
+            </g>
+          </g>
+        </g>
+
+        <!-- Realistic Delivery Scooter —
+             Primary: colored SVG emoji from iconify CDN (Noto pack)
+             Fallback: system emoji text rendered by OS emoji font
+             (browser shows the text underneath if the image fails to load) -->
         <g id="scooter-sprite">
-          <g transform="translate(-36, -68) scale(1.7)">
+          <!-- Soft ground shadow -->
+          <ellipse cx="0" cy="30" rx="32" ry="3.5" fill="#000" opacity="0.3"/>
+          <ellipse cx="0" cy="30" rx="26" ry="1.8" fill="#000" opacity="0.35"/>
+
+          <!-- Fallback: native emoji scooter (visible if the image below doesn't load) -->
+          <text x="0" y="18" font-size="70" text-anchor="middle"
+                style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Segoe UI Symbol', emoji;">🛵</text>
+
+          <!-- Primary: high-quality colored motor-scooter SVG from iconify -->
+          <image width="90" height="90" x="-45" y="-60"
+                 href="https://api.iconify.design/noto/motor-scooter.svg"
+                 xlink:href="https://api.iconify.design/noto/motor-scooter.svg"
+                 preserveAspectRatio="xMidYMid meet"/>
+
+          <!-- (Old detailed SVG removed — emoji/iconify provides richer realism) -->
+          <g style="display:none">
 
             <!-- Speed/motion blur lines (behind the scooter) -->
             <g opacity="0.75">
@@ -642,8 +698,9 @@
             <circle cx="5" cy="16" r="0.45" fill="#DC2626"/>
             <circle cx="5" cy="16" r="0.25" fill="#FEE2E2" opacity="0.8"/>
           </g>
+          <!-- Scooter travels on a path inset from both ends so it never overlaps with the location pins -->
           <animateMotion dur="9s" repeatCount="indefinite" rotate="auto"
-            path="M 20 100 Q 300 20 600 100 T 1180 100"/>
+            path="M 80 100 Q 340 25 600 100 T 1120 100"/>
         </g>
       </svg>
     </div>

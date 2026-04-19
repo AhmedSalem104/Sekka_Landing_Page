@@ -191,11 +191,11 @@ $(document).ready(function() {
     let isDeleting = false;
     let loopTimer = null;
 
-    // Tuned for comfortable reading:
-    const TYPE_SPEED = 95;      // ms per char while typing
-    const DELETE_SPEED = 55;    // ms per char while deleting
-    const END_PAUSE = 1800;     // pause after finishing a phrase (reading time)
-    const START_PAUSE = 350;    // pause before starting next phrase
+    // Tuned for moderate, readable pace — same feel typing AND deleting:
+    const TYPE_SPEED = 90;      // ms per char while typing
+    const DELETE_SPEED = 75;    // ms per char while deleting (nearly equal to typing)
+    const END_PAUSE = 2200;     // pause after finishing a phrase (so the reader can absorb it)
+    const START_PAUSE = 500;    // pause before starting next phrase
 
     function getPhrases() {
       return phrasesKeys.map(k => SekkaI18n.t(k));
