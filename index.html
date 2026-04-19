@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="سِكّة - شريك شغلك في الديليفري. تطبيق يساعد سائقي التوصيل على تنظيم طلباتهم، تحسين مساراتهم، وزيادة دخلهم اليومي.">
+  <meta name="theme-color" content="#FC5D01">
+  <title data-i18n="meta.title">سِكّة — شريك شغلك في الديليفري</title>
+
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#FC5D01',
+              light: '#FFF0E6',
+              dark: '#D94E00',
+              50: '#FFF7F0',
+              100: '#FFF0E6',
+              200: '#FFE0CC',
+              500: '#FC5D01',
+              600: '#D94E00',
+              700: '#B84200',
+            },
+            navy: '#2D3748',
+            surface: '#FFFFFF',
+            background: '#F7FAFC',
+            headline: '#1A202C',
+            body: '#4A5568',
+            caption: '#718096',
+            success: '#38A169',
+            error: '#E53E3E',
+            warning: '#ECC94B',
+            info: '#3182CE',
+          },
+          fontFamily: {
+            'tajawal': ['Tajawal', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow': '0 0 40px rgba(252, 93, 1, 0.4)',
+            'soft': '0 10px 30px -10px rgba(0, 0, 0, 0.1)',
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Iconify (Iconsax icons — same family as the Sekka app) -->
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+</head>
+
+<body class="rtl antialiased">
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress"></div>
+
+  <!-- ============================================
+       NAVBAR
+       ============================================ -->
+  <nav id="navbar" class="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <img src="assets/logo.png" alt="Sekka Logo" class="logo-img h-10 w-10 rounded-xl object-contain transition-transform duration-300">
+        <span class="hidden sm:inline text-xl font-black text-headline dark:text-white">
+          <span class="gradient-text">سِكّة</span>
+          <span class="text-sm text-caption font-medium ms-1" data-i18n="hero.badge">تطبيق مصري</span>
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#home" class="nav-link" data-i18n="nav.home">الرئيسية</a>
+        <a href="#features" class="nav-link" data-i18n="nav.features">المميزات</a>
+        <a href="#how" class="nav-link" data-i18n="nav.how">إزاي يشتغل</a>
+        <a href="#testimonials" class="nav-link" data-i18n="nav.testimonials">آراء السائقين</a>
+        <a href="#download" class="nav-link" data-i18n="nav.download">حمّل التطبيق</a>
+      </div>
+
+      <!-- Right Actions -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language Toggle -->
+        <div class="lang-toggle">
+          <span class="lang-option active" data-lang-switch="ar">AR</span>
+          <span class="lang-option" data-lang-switch="en">EN</span>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle theme">
+          <iconify-icon data-icon="moon" icon="iconsax:moon" width="20"></iconify-icon>
+          <iconify-icon data-icon="sun" icon="iconsax:sun-1" width="20" style="display:none"></iconify-icon>
+        </button>
+
+        <!-- CTA -->
+        <a href="#download" class="hidden md:inline-flex btn-primary !py-2.5 !px-5 !text-sm" data-i18n="nav.cta">حمّل دلوقتي</a>
+
+        <!-- Hamburger -->
+        <button id="hamburger-btn" class="lg:hidden icon-btn" aria-label="Menu">
+          <iconify-icon icon="iconsax:element-4" width="22"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-backdrop" class="mobile-backdrop"></div>
+  <aside id="mobile-drawer" class="mobile-drawer">
+    <div class="flex items-center justify-between mb-10">
+      <div class="flex items-center gap-2">
+        <img src="assets/logo.png" alt="Logo" class="h-10 w-10 rounded-xl">
+        <span class="text-xl font-black gradient-text">سِكّة</span>
+      </div>
+      <button id="drawer-close" class="icon-btn" aria-label="Close">
+        <iconify-icon icon="iconsax:close-circle" width="22"></iconify-icon>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-4 text-lg">
+      <a href="#home" class="nav-link py-2" data-i18n="nav.home">الرئيسية</a>
+      <a href="#features" class="nav-link py-2" data-i18n="nav.features">المميزات</a>
+      <a href="#how" class="nav-link py-2" data-i18n="nav.how">إزاي يشتغل</a>
+      <a href="#testimonials" class="nav-link py-2" data-i18n="nav.testimonials">آراء السائقين</a>
+      <a href="#download" class="nav-link py-2" data-i18n="nav.download">حمّل التطبيق</a>
+    </nav>
+    <div class="mt-10">
+      <a href="#download" class="btn-primary w-full" data-i18n="nav.cta">حمّل دلوقتي</a>
+    </div>
+  </aside>
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+    <!-- Background Blobs -->
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Left: Text -->
+        <div class="text-center lg:text-start order-2 lg:order-1">
+          <div class="reveal reveal-right inline-flex items-center gap-2 bg-primary-100 dark:bg-primary/10 text-primary-600 dark:text-primary px-4 py-2 rounded-full text-sm font-bold mb-6">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span data-i18n="hero.badge">تطبيق مصري 100% للسائقين</span>
+          </div>
+
+          <h1 class="reveal text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight mb-4 text-headline dark:text-white">
+            <span data-i18n="hero.title1">شريك شغلك</span>
+            <br>
+            <span class="gradient-text" data-i18n="hero.title2">في الديليفري</span>
+          </h1>
+
+          <p class="reveal reveal-right text-lg sm:text-xl text-body dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0" data-delay="200">
+            <span data-i18n="hero.subtitle">سكّة مش مجرد تطبيق لتتبع الطلبات — هو </span>
+            <span id="typewriter" class="typewriter gradient-text font-bold"></span>
+          </p>
+
+          <!-- CTAs -->
+          <div class="reveal flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8" data-delay="300">
+            <a href="#" class="store-badge" aria-label="Download on Google Play">
+              <svg class="store-icon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85c-.5-.25-.84-.76-.84-1.35zM16.81 15.12L6.05 21.34l8.49-8.49 2.27 2.27zM20.16 10.81c.35.27.58.69.58 1.19s-.22.91-.57 1.18l-2.29 1.32-2.5-2.5 2.5-2.5 2.28 1.31zM6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49z"/>
+              </svg>
+              <div>
+                <div class="store-label" data-i18n="hero.store.google.label">حمّل من</div>
+                <div class="store-name" data-i18n="hero.store.google.name">Google Play</div>
+              </div>
+            </a>
+            <a href="#" class="store-badge" aria-label="Download on App Store">
+              <svg class="store-icon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+              </svg>
+              <div>
+                <div class="store-label" data-i18n="hero.store.apple.label">حمّل من</div>
+                <div class="store-name" data-i18n="hero.store.apple.name">App Store</div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Social proof -->
+          <div class="reveal flex items-center gap-6 justify-center lg:justify-start text-sm" data-delay="400">
+            <div class="flex items-center gap-2">
+              <div class="flex -space-x-2 rtl:space-x-reverse">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#FC5D01] to-[#FF8534] border-2 border-white dark:border-[#121212] flex items-center justify-center text-white font-bold text-xs">أ</div>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#3182CE] to-[#63B3ED] border-2 border-white dark:border-[#121212] flex items-center justify-center text-white font-bold text-xs">م</div>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#38A169] to-[#68D391] border-2 border-white dark:border-[#121212] flex items-center justify-center text-white font-bold text-xs">س</div>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#805AD5] to-[#B794F4] border-2 border-white dark:border-[#121212] flex items-center justify-center text-white font-bold text-xs">+</div>
+              </div>
+              <div>
+                <div class="font-bold text-headline dark:text-white">+10,000</div>
+                <div class="text-caption text-xs">سائق استخدم سكّة</div>
+              </div>
+            </div>
+            <div class="h-10 w-px bg-border dark:bg-[#2D3748]"></div>
+            <div>
+              <div class="font-bold text-headline dark:text-white">⭐ 4.9 / 5</div>
+              <div class="text-caption text-xs">من السائقين</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Phone Mockup -->
+        <div class="order-1 lg:order-2 flex justify-center relative">
+          <div class="relative">
+            <div class="phone-glow"></div>
+
+            <!-- Floating Badges -->
+            <div class="phone-float-badge" style="top: 8%; inset-inline-start: -10%; animation-delay: 0.3s;">
+              <span class="text-2xl">⭐</span>
+              <div>
+                <div class="text-lg leading-none" data-i18n="hero.badge.rating">4.9</div>
+                <div class="text-xs text-caption font-medium" data-i18n="hero.badge.rating.label">تقييم السائقين</div>
+              </div>
+            </div>
+            <div class="phone-float-badge" style="top: 50%; inset-inline-end: -14%; animation-delay: 1s;">
+              <span class="text-2xl">🚀</span>
+              <div>
+                <div class="text-lg leading-none text-success" data-i18n="hero.badge.orders">+18</div>
+                <div class="text-xs text-caption font-medium" data-i18n="hero.badge.orders.label">طلب يومياً</div>
+              </div>
+            </div>
+            <div class="phone-float-badge" style="bottom: 14%; inset-inline-start: -8%; animation-delay: 1.6s;">
+              <span class="text-2xl">⏱️</span>
+              <div>
+                <div class="text-lg leading-none" style="color:#FC5D01;" data-i18n="hero.badge.hours">-3</div>
+                <div class="text-xs text-caption font-medium" data-i18n="hero.badge.hours.label">ساعات توفير</div>
+              </div>
+            </div>
+
+            <!-- Phone Frame -->
+            <div id="phone-frame" class="phone-frame">
+              <div class="phone-screen">
+                <div class="app-ui">
+                  <!-- Header -->
+                  <div class="app-ui-header">
+                    <div>
+                      <div class="app-ui-greeting" data-i18n="phone.greeting">أهلاً يا أحمد 👋</div>
+                      <div class="app-ui-title" data-i18n="phone.title">يوم جديد في سكّة</div>
+                    </div>
+                    <img src="assets/logo.png" alt="" class="w-8 h-8 rounded-lg">
+                  </div>
+
+                  <!-- Stats -->
+                  <div class="app-ui-stats">
+                    <div class="app-ui-stat">
+                      <div class="app-ui-stat-label" data-i18n="phone.stat.orders.label">طلبات النهاردة</div>
+                      <div class="app-ui-stat-value" data-i18n="phone.stat.orders.value">18/20</div>
+                    </div>
+                    <div class="app-ui-stat">
+                      <div class="app-ui-stat-label" data-i18n="phone.stat.earnings.label">المكسب</div>
+                      <div class="app-ui-stat-value" data-i18n="phone.stat.earnings.value">450 ج</div>
+                    </div>
+                  </div>
+
+                  <!-- Orders -->
+                  <div class="app-ui-order">
+                    <div class="app-ui-order-stripe"></div>
+                    <div class="app-ui-order-body">
+                      <div class="app-ui-order-name" data-i18n="phone.order.name">أحمد محمد</div>
+                      <div class="app-ui-order-addr" data-i18n="phone.order.addr">15 ش النصر، المعادي</div>
+                      <div class="app-ui-order-row">
+                        <span class="app-ui-order-price" data-i18n="phone.order.price">200 ج</span>
+                        <span class="app-ui-order-status" data-i18n="phone.order.status">في السكة</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="app-ui-order">
+                    <div class="app-ui-order-stripe" style="background: #3182CE;"></div>
+                    <div class="app-ui-order-body">
+                      <div class="app-ui-order-name" data-i18n="phone.order2.name">سارة علي</div>
+                      <div class="app-ui-order-addr" data-i18n="phone.order2.addr">7 ش التحرير، الدقي</div>
+                      <div class="app-ui-order-row">
+                        <span class="app-ui-order-price" data-i18n="phone.order2.price">150 ج</span>
+                        <span class="app-ui-order-status" style="background: rgba(49, 130, 206, 0.12); color: #3182CE;" data-i18n="phone.order2.status">جديد</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Progress -->
+                  <div class="app-ui-progress">
+                    <div class="app-ui-progress-row">
+                      <span data-i18n="phone.progress.label">إنجاز النهاردة</span>
+                      <span class="gradient-text" data-i18n="phone.progress.value">85%</span>
+                    </div>
+                    <div class="app-ui-progress-bar">
+                      <div class="app-ui-progress-fill"></div>
+                    </div>
+                  </div>
+
+                  <!-- Bottom Nav -->
+                  <div class="app-ui-nav">
+                    <div class="app-ui-nav-item active">
+                      <iconify-icon icon="iconsax:home-2-bold" width="20"></iconify-icon>
+                      <span data-i18n="phone.nav.home">الرئيسية</span>
+                    </div>
+                    <div class="app-ui-nav-item">
+                      <iconify-icon icon="iconsax:box-1" width="20"></iconify-icon>
+                      <span data-i18n="phone.nav.orders">الطلبات</span>
+                    </div>
+                    <div class="app-ui-nav-item">
+                      <iconify-icon icon="iconsax:map" width="20"></iconify-icon>
+                      <span data-i18n="phone.nav.map">الخريطة</span>
+                    </div>
+                    <div class="app-ui-nav-item">
+                      <iconify-icon icon="iconsax:profile-circle" width="20"></iconify-icon>
+                      <span data-i18n="phone.nav.profile">حسابي</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Road SVG at bottom of hero -->
+    <div id="road-section" class="relative mt-16 lg:mt-24 max-w-7xl mx-auto px-4">
+      <svg viewBox="0 0 1200 160" class="road-svg" preserveAspectRatio="none">
+        <!-- Road base -->
+        <path class="road-path" d="M 20 100 Q 300 20 600 100 T 1180 100"/>
+        <!-- Dashed center -->
+        <path class="road-dashes" d="M 20 100 Q 300 20 600 100 T 1180 100"/>
+        <!-- Location pin start -->
+        <g class="road-location-pin" transform="translate(20, 80)">
+          <circle cx="0" cy="20" r="14" fill="#FC5D01"/>
+          <circle cx="0" cy="20" r="6" fill="#fff"/>
+          <path d="M 0 4 L -8 -8 L 8 -8 Z" fill="#FC5D01" transform="translate(0, 12) scale(0.8)"/>
+        </g>
+        <!-- Destination pin -->
+        <g transform="translate(1180, 80)">
+          <circle cx="0" cy="20" r="14" fill="#38A169"/>
+          <circle cx="0" cy="20" r="6" fill="#fff"/>
+        </g>
+        <!-- Scooter (animated along the road via SMIL) -->
+        <g id="scooter-sprite">
+          <g transform="translate(-32, -44) scale(2)">
+            <!-- Delivery box -->
+            <rect x="4" y="-2" width="9" height="8" rx="1.5" fill="#D94E00"/>
+            <rect x="5" y="-1" width="7" height="6" rx="0.8" fill="#FC5D01"/>
+            <rect x="7" y="1" width="3" height="1" fill="#fff" opacity="0.6"/>
+            <!-- Body -->
+            <rect x="8" y="4" width="18" height="12" rx="3" fill="#FC5D01"/>
+            <rect x="10" y="6" width="14" height="6" rx="1" fill="#fff" opacity="0.35"/>
+            <!-- Handlebars/frame -->
+            <path d="M 4 16 Q 4 12 8 12 L 26 12 Q 30 12 30 16" stroke="#2D3748" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Wheels -->
+            <circle cx="7" cy="18" r="4.2" fill="#2D3748"/>
+            <circle cx="7" cy="18" r="1.8" fill="#FC5D01"/>
+            <circle cx="27" cy="18" r="4.2" fill="#2D3748"/>
+            <circle cx="27" cy="18" r="1.8" fill="#FC5D01"/>
+          </g>
+          <animateMotion dur="7s" repeatCount="indefinite" rotate="auto"
+            path="M 20 100 Q 300 20 600 100 T 1180 100"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       PROBLEM vs SOLUTION
+       ============================================ -->
+  <section class="py-20 lg:py-28 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white" data-i18n="compare.title">
+          الفرق بيبان في اليوم الأول
+        </h2>
+        <p class="reveal text-lg text-body dark:text-gray-300" data-i18n="compare.subtitle" data-delay="100">
+          شوف يوم السائق بدون سكّة ومعاها
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- Bad Card -->
+        <div class="reveal reveal-right compare-card bad">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-14 h-14 rounded-full bg-error/20 flex items-center justify-center text-3xl">😓</div>
+            <div>
+              <h3 class="text-2xl font-black text-error" data-i18n="compare.bad.title">بدون سكّة</h3>
+              <p class="text-sm text-body" data-i18n="compare.bad.sub">يوم مشتت ومتعب</p>
+            </div>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-5 h-5 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 text-xs font-bold">✕</span>
+              <span class="text-body dark:text-gray-300" data-i18n="compare.bad.1">8 طلبات بس في 9 ساعات</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-5 h-5 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 text-xs font-bold">✕</span>
+              <span class="text-body dark:text-gray-300" data-i18n="compare.bad.2">95 كم رايح جاي بدون ترتيب</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-5 h-5 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 text-xs font-bold">✕</span>
+              <span class="text-body dark:text-gray-300" data-i18n="compare.bad.3">3-4 طلبات فاشلة كل يوم</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-5 h-5 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 text-xs font-bold">✕</span>
+              <span class="text-body dark:text-gray-300" data-i18n="compare.bad.4">مش عارف كسبان ولا خسران</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-5 h-5 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 text-xs font-bold">✕</span>
+              <span class="text-body dark:text-gray-300" data-i18n="compare.bad.5">الطلبات مشتتة على 4 أماكن</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Good Card -->
+        <div class="reveal reveal-left compare-card good">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-14 h-14 rounded-full bg-success/20 flex items-center justify-center text-3xl">🚀</div>
+            <div>
+              <h3 class="text-2xl font-black text-success" data-i18n="compare.good.title">مع سكّة</h3>
+              <p class="text-sm text-body" data-i18n="compare.good.sub">يوم منظم ومربح</p>
+            </div>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-5 h-5 rounded-full bg-success/20 text-success flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
+              <span class="text-body dark:text-gray-300 font-medium" data-i18n="compare.good.1">18 طلب في 8 ساعات بس</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-5 h-5 rounded-full bg-success/20 text-success flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
+              <span class="text-body dark:text-gray-300 font-medium" data-i18n="compare.good.2">48 كم بمسار ذكي موفّر</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-5 h-5 rounded-full bg-success/20 text-success flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
+              <span class="text-body dark:text-gray-300 font-medium" data-i18n="compare.good.3">صفر طلبات فاشلة تقريباً</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-5 h-5 rounded-full bg-success/20 text-success flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
+              <span class="text-body dark:text-gray-300 font-medium" data-i18n="compare.good.4">بتعرف أرباحك لحظة بلحظة</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 w-5 h-5 rounded-full bg-success/20 text-success flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
+              <span class="text-body dark:text-gray-300 font-medium" data-i18n="compare.good.5">كل الطلبات في مكان واحد</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       FEATURES
+       ============================================ -->
+  <section id="features" class="py-20 lg:py-28 bg-gradient-to-b from-background to-white dark:from-[#121212] dark:to-[#1a1a1a] relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="text-center mb-16">
+        <div class="reveal inline-block px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary/10 text-primary-600 dark:text-primary font-bold text-sm mb-4" data-i18n="features.tag">
+          إيه اللي يخليك تختار سكّة
+        </div>
+        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white" data-delay="100">
+          <span data-i18n="features.title">مميزات مصممة </span>
+          <span class="gradient-text" data-i18n="features.title.highlight">للسائق المصري</span>
+        </h2>
+        <p class="reveal text-lg text-body dark:text-gray-300 max-w-2xl mx-auto" data-i18n="features.subtitle" data-delay="200">
+          كل ميزة محلولة من مشكلة حقيقية بتقابلك كل يوم
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Feature 1 -->
+        <div class="reveal feature-card" data-delay="100">
+          <div class="feature-icon-wrap">
+            <iconify-icon icon="iconsax:clipboard-text" width="30"></iconify-icon>
+          </div>
+          <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.1.title">نسخ من الواتساب</h3>
+          <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.1.desc">الصق رسالة الواتساب والتطبيق يقراها ويسجّل الطلب في ثانية</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="reveal feature-card" data-delay="200">
+          <div class="feature-icon-wrap">
+            <iconify-icon icon="iconsax:routing-2" width="30"></iconify-icon>
+          </div>
+          <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.2.title">ترتيب المسار الذكي</h3>
+          <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.2.desc">بيرتبلك الطلبات بالأقرب والأعجل — وفّر نص المسافة</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="reveal feature-card" data-delay="300">
+          <div class="feature-icon-wrap">
+            <iconify-icon icon="iconsax:microphone-2" width="30"></iconify-icon>
+          </div>
+          <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.3.title">الإدخال الصوتي</h3>
+          <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.3.desc">كلّمه وأنت سايق وهو يسجّل — إضافة طلب، تغيير حالة، ملاحظات</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="reveal feature-card" data-delay="400">
+          <div class="feature-icon-wrap">
+            <iconify-icon icon="iconsax:cloud-cross" width="30"></iconify-icon>
+          </div>
+          <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.4.title">يشتغل بدون نت</h3>
+          <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.4.desc">السائق مش دايماً online — التطبيق بيحفظ ويكامل لما النت يرجع</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="reveal feature-card" data-delay="100">
+          <div class="feature-icon-wrap">
+            <iconify-icon icon="iconsax:wallet-2" width="30"></iconify-icon>
+          </div>
+          <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.5.title">محاسبة دقيقة</h3>
+          <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.5.desc">تعرف كسبان كام لحظة بلحظة — كاش، تحويل، انستاباي، فودافون كاش</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="reveal feature-card" data-delay="200">
+          <div class="feature-icon-wrap">
+            <iconify-icon icon="iconsax:shield-tick" width="30"></iconify-icon>
+          </div>
+          <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.6.title">حماية من النصب</h3>
+          <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.6.desc">صور للتسليم، geofencing، توثيق كامل — حقك محفوظ</p>
+        </div>
+
+        <!-- Feature 7 -->
+        <div class="reveal feature-card" data-delay="300">
+          <div class="feature-icon-wrap">
+            <iconify-icon icon="iconsax:map-1" width="30"></iconify-icon>
+          </div>
+          <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.7.title">الخرائط المفضلة</h3>
+          <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.7.desc">Google Maps أو Waze — ضغطة واحدة والعنوان جاهز</p>
+        </div>
+
+        <!-- Feature 8 -->
+        <div class="reveal feature-card" data-delay="400">
+          <div class="feature-icon-wrap">
+            <iconify-icon icon="iconsax:danger" width="30"></iconify-icon>
+          </div>
+          <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.8.title">زر الاستغاثة</h3>
+          <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.8.desc">SOS button — أمانك أولاً، بيشارك موقعك مع أشخاص تثق فيهم</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       HOW IT WORKS
+       ============================================ -->
+  <section id="how" class="py-20 lg:py-28 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <div class="reveal inline-block px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary/10 text-primary-600 dark:text-primary font-bold text-sm mb-4" data-i18n="how.tag">
+          3 خطوات بسيطة
+        </div>
+        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white" data-delay="100">
+          <span data-i18n="how.title">إزاي سكّة </span>
+          <span class="gradient-text" data-i18n="how.title.highlight">بتشتغل</span>
+        </h2>
+        <p class="reveal text-lg text-body dark:text-gray-300" data-i18n="how.subtitle" data-delay="200">
+          من الصبح للمسا بـ 3 خطوات بس
+        </p>
+      </div>
+
+      <div class="relative grid md:grid-cols-3 gap-10 md:gap-6">
+        <!-- Connector line (desktop only) -->
+        <div class="hidden md:block absolute top-10 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/40 to-transparent -z-10"></div>
+
+        <!-- Step 1 -->
+        <div class="reveal timeline-step text-center" data-delay="100">
+          <div class="timeline-number mx-auto mb-6">1</div>
+          <div class="text-5xl mb-4">📋</div>
+          <h3 class="text-2xl font-black mb-3 text-headline dark:text-white" data-i18n="how.1.title">ضيف الطلبات</h3>
+          <p class="text-body dark:text-gray-300" data-i18n="how.1.desc">الصق من الواتساب، أو كلّمه صوتياً، أو اكتب يدوي — براحتك</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="reveal timeline-step text-center" data-delay="300">
+          <div class="timeline-number mx-auto mb-6">2</div>
+          <div class="text-5xl mb-4">🧠</div>
+          <h3 class="text-2xl font-black mb-3 text-headline dark:text-white" data-i18n="how.2.title">التطبيق يرتبلك</h3>
+          <p class="text-body dark:text-gray-300" data-i18n="how.2.desc">المسار الأذكى، الطلب الأقرب، التوقيت الأمثل — كله بـ AI</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="reveal timeline-step text-center" data-delay="500">
+          <div class="timeline-number mx-auto mb-6">3</div>
+          <div class="text-5xl mb-4">💰</div>
+          <h3 class="text-2xl font-black mb-3 text-headline dark:text-white" data-i18n="how.3.title">توصل وتكسب أكتر</h3>
+          <p class="text-body dark:text-gray-300" data-i18n="how.3.desc">+10 طلبات يومياً، محاسبة دقيقة، وأنت مرتاح البال</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       STATS
+       ============================================ -->
+  <section class="stats-section py-20 lg:py-24 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="text-center mb-12 text-white">
+        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-3" data-i18n="stats.title">الأرقام بتتكلم</h2>
+        <p class="reveal text-lg opacity-95" data-i18n="stats.subtitle" data-delay="100">
+          نتايج حقيقية من سائقين بيستخدموا سكّة
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-white text-center">
+        <div class="reveal reveal-scale" data-delay="100">
+          <div class="text-5xl sm:text-6xl font-black mb-2 flex items-center justify-center gap-1">
+            <span data-i18n="stats.1.prefix">+</span>
+            <span class="counter" data-count="3">0</span>
+          </div>
+          <div class="text-sm sm:text-base opacity-95 font-bold" data-i18n="stats.1.suffix"> ساعات</div>
+          <div class="text-sm opacity-80 mt-1" data-i18n="stats.1.label">توفير يومي</div>
+        </div>
+        <div class="reveal reveal-scale" data-delay="200">
+          <div class="text-5xl sm:text-6xl font-black mb-2 flex items-center justify-center gap-1">
+            <span data-i18n="stats.2.prefix">+</span>
+            <span class="counter" data-count="10">0</span>
+          </div>
+          <div class="text-sm sm:text-base opacity-95 font-bold" data-i18n="stats.2.suffix"> طلبات</div>
+          <div class="text-sm opacity-80 mt-1" data-i18n="stats.2.label">إضافية يومياً</div>
+        </div>
+        <div class="reveal reveal-scale" data-delay="300">
+          <div class="text-5xl sm:text-6xl font-black mb-2 flex items-center justify-center gap-1">
+            <span data-i18n="stats.3.prefix">-</span>
+            <span class="counter" data-count="50">0</span>
+            <span data-i18n="stats.3.suffix">%</span>
+          </div>
+          <div class="text-sm opacity-80 mt-1" data-i18n="stats.3.label">مسافة أقل</div>
+        </div>
+        <div class="reveal reveal-scale" data-delay="400">
+          <div class="text-5xl sm:text-6xl font-black mb-2 flex items-center justify-center gap-1">
+            <span class="counter" data-count="2">0</span>
+            <span data-i18n="stats.4.suffix">x</span>
+          </div>
+          <div class="text-sm opacity-80 mt-1" data-i18n="stats.4.label">ضعف الدخل</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       TESTIMONIALS
+       ============================================ -->
+  <section id="testimonials" class="py-20 lg:py-28 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <div class="reveal inline-block px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary/10 text-primary-600 dark:text-primary font-bold text-sm mb-4" data-i18n="testimonials.tag">
+          آراء حقيقية
+        </div>
+        <h2 class="reveal text-3xl sm:text-4xl lg:text-5xl font-black mb-4 text-headline dark:text-white" data-delay="100">
+          <span data-i18n="testimonials.title">السائقين </span>
+          <span class="gradient-text" data-i18n="testimonials.title.highlight">بيحبوا سكّة</span>
+        </h2>
+        <p class="reveal text-lg text-body dark:text-gray-300" data-i18n="testimonials.subtitle" data-delay="200">
+          شوف إيه اللي بيقولوه سائقينا عن التطبيق
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="reveal testimonial-card" data-delay="100">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="avatar">أ</div>
+            <div>
+              <div class="font-black text-headline dark:text-white" data-i18n="t.1.name">أحمد محمد</div>
+              <div class="text-xs text-caption" data-i18n="t.1.role">سائق مستقل — القاهرة</div>
+            </div>
+          </div>
+          <div class="text-warning mb-3 text-lg" data-i18n="t.rating">⭐⭐⭐⭐⭐</div>
+          <p class="text-body dark:text-gray-300 leading-relaxed" data-i18n="t.1.quote">
+            وفرت ساعتين في اليوم، وبعرف كسبي بالظبط. ده بقى شريك شغلي الحقيقي.
+          </p>
+        </div>
+
+        <div class="reveal testimonial-card" data-delay="300">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="avatar" style="background: linear-gradient(135deg, #3182CE, #63B3ED);">م</div>
+            <div>
+              <div class="font-black text-headline dark:text-white" data-i18n="t.2.name">محمود علي</div>
+              <div class="text-xs text-caption" data-i18n="t.2.role">سائق طلبات — المعادي</div>
+            </div>
+          </div>
+          <div class="text-warning mb-3 text-lg" data-i18n="t.rating">⭐⭐⭐⭐⭐</div>
+          <p class="text-body dark:text-gray-300 leading-relaxed" data-i18n="t.2.quote">
+            النسخ من الواتساب غيّر حياتي. بعمل 30 طلب في اليوم بدل 15، ومفيش تعب.
+          </p>
+        </div>
+
+        <div class="reveal testimonial-card" data-delay="500">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="avatar" style="background: linear-gradient(135deg, #805AD5, #B794F4);">س</div>
+            <div>
+              <div class="font-black text-headline dark:text-white" data-i18n="t.3.name">سارة حسن</div>
+              <div class="text-xs text-caption" data-i18n="t.3.role">سائقة مستقلة — الإسكندرية</div>
+            </div>
+          </div>
+          <div class="text-warning mb-3 text-lg" data-i18n="t.rating">⭐⭐⭐⭐⭐</div>
+          <p class="text-body dark:text-gray-300 leading-relaxed" data-i18n="t.3.quote">
+            لما بسوق، بكلّمه بس وهو بيسجّل كل حاجة. أمان + سرعة = سكّة.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       DOWNLOAD CTA
+       ============================================ -->
+  <section id="download" class="download-section py-20 lg:py-28 relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+      <div class="reveal inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary font-bold text-sm mb-6 border border-primary/30" data-i18n="cta.tag">
+        ابدأ دلوقتي
+      </div>
+      <h2 class="reveal text-3xl sm:text-4xl lg:text-6xl font-black text-white mb-4 leading-tight" data-delay="100">
+        <span data-i18n="cta.title">جاهز تبدأ يومك مع </span>
+        <span class="gradient-text" data-i18n="cta.title.highlight">سِكّة؟</span>
+      </h2>
+      <p class="reveal text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto" data-i18n="cta.subtitle" data-delay="200">
+        حمّل التطبيق دلوقتي وابدأ توفّر وقتك وتزوّد دخلك من أول يوم
+      </p>
+
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4 mb-6" data-delay="300">
+        <a href="#" class="store-badge" aria-label="Google Play">
+          <svg class="store-icon" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85c-.5-.25-.84-.76-.84-1.35zM16.81 15.12L6.05 21.34l8.49-8.49 2.27 2.27zM20.16 10.81c.35.27.58.69.58 1.19s-.22.91-.57 1.18l-2.29 1.32-2.5-2.5 2.5-2.5 2.28 1.31zM6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49z"/>
+          </svg>
+          <div>
+            <div class="store-label" data-i18n="hero.store.google.label">حمّل من</div>
+            <div class="store-name" data-i18n="hero.store.google.name">Google Play</div>
+          </div>
+        </a>
+        <a href="#" class="store-badge" aria-label="App Store">
+          <svg class="store-icon" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+          </svg>
+          <div>
+            <div class="store-label" data-i18n="hero.store.apple.label">حمّل من</div>
+            <div class="store-name" data-i18n="hero.store.apple.name">App Store</div>
+          </div>
+        </a>
+      </div>
+
+      <p class="reveal text-gray-400 text-sm" data-i18n="cta.note" data-delay="400">
+        🎁 مجاني للسائقين — مفيش اشتراكات مخفية
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="bg-[#0F1419] text-gray-300 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <!-- About -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="assets/logo.png" alt="Sekka" class="w-11 h-11 rounded-xl">
+            <span class="text-2xl font-black text-white">
+              <span class="gradient-text">سِكّة</span>
+            </span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4" data-i18n="footer.about.desc">
+            شريك شغلك في الديليفري. بنخلي يومك أسهل، أسرع، وأكتر ربحاً.
+          </p>
+          <div class="flex gap-3">
+            <a href="#" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="Facebook">
+              <iconify-icon icon="mdi:facebook" width="20"></iconify-icon>
+            </a>
+            <a href="#" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="Instagram">
+              <iconify-icon icon="mdi:instagram" width="20"></iconify-icon>
+            </a>
+            <a href="#" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="TikTok">
+              <iconify-icon icon="simple-icons:tiktok" width="18"></iconify-icon>
+            </a>
+            <a href="#" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="X">
+              <iconify-icon icon="ri:twitter-x-fill" width="18"></iconify-icon>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-black text-lg mb-4" data-i18n="footer.links.title">روابط سريعة</h4>
+          <ul class="space-y-2">
+            <li><a href="#home" class="text-gray-400 hover:text-primary transition-colors text-sm" data-i18n="nav.home">الرئيسية</a></li>
+            <li><a href="#features" class="text-gray-400 hover:text-primary transition-colors text-sm" data-i18n="nav.features">المميزات</a></li>
+            <li><a href="#how" class="text-gray-400 hover:text-primary transition-colors text-sm" data-i18n="nav.how">إزاي يشتغل</a></li>
+            <li><a href="#testimonials" class="text-gray-400 hover:text-primary transition-colors text-sm" data-i18n="nav.testimonials">آراء السائقين</a></li>
+            <li><a href="#download" class="text-gray-400 hover:text-primary transition-colors text-sm" data-i18n="nav.download">حمّل التطبيق</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="text-white font-black text-lg mb-4" data-i18n="footer.contact.title">تواصل معانا</h4>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-2 text-gray-400">
+              <iconify-icon icon="iconsax:sms" width="20"></iconify-icon>
+              <a href="mailto:support@sekka.app" class="hover:text-primary" data-i18n="footer.contact.email">support@sekka.app</a>
+            </li>
+            <li class="flex items-center gap-2 text-gray-400">
+              <iconify-icon icon="iconsax:call" width="20"></iconify-icon>
+              <a href="tel:01000000000" class="hover:text-primary" data-i18n="footer.contact.phone">01000000000</a>
+            </li>
+            <li class="flex items-center gap-2 text-gray-400">
+              <iconify-icon icon="iconsax:location" width="20"></iconify-icon>
+              <span>القاهرة، مصر</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Download -->
+        <div>
+          <h4 class="text-white font-black text-lg mb-4" data-i18n="footer.download.title">حمّل التطبيق</h4>
+          <div class="flex flex-col gap-3">
+            <a href="#" class="store-badge !py-2 !px-4 !min-w-0">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85c-.5-.25-.84-.76-.84-1.35z"/></svg>
+              <div>
+                <div class="store-label" data-i18n="hero.store.google.label">حمّل من</div>
+                <div class="store-name text-sm" data-i18n="hero.store.google.name">Google Play</div>
+              </div>
+            </a>
+            <a href="#" class="store-badge !py-2 !px-4 !min-w-0">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13z"/></svg>
+              <div>
+                <div class="store-label" data-i18n="hero.store.apple.label">حمّل من</div>
+                <div class="store-name text-sm" data-i18n="hero.store.apple.name">App Store</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider-gradient mb-6"></div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+        <div class="text-gray-500" data-i18n="footer.copyright">
+          © 2026 سِكّة — جميع الحقوق محفوظة
+        </div>
+        <div class="text-gray-500 flex items-center gap-2" data-i18n="footer.made">
+          صُنع بـ ❤️ في مصر
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       STICKY MOBILE DOWNLOAD
+       ============================================ -->
+  <div id="sticky-download" class="sticky-download">
+    <div class="flex items-center gap-2">
+      <img src="assets/logo.png" alt="" class="w-10 h-10 rounded-xl bg-white/20 p-1">
+      <div>
+        <div class="font-black leading-tight" data-i18n="sticky.text">حمّل التطبيق</div>
+        <div class="text-xs opacity-90">سِكّة</div>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <a href="#" class="bg-white text-[#FC5D01] px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-1" aria-label="Google Play">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85c-.5-.25-.84-.76-.84-1.35z"/></svg>
+        Play
+      </a>
+      <a href="#" class="bg-white text-[#FC5D01] px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-1" aria-label="App Store">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13z"/></svg>
+        iOS
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SCRIPTS
+       ============================================ -->
+  <script src="js/theme.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
