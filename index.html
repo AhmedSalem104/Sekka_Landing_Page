@@ -62,9 +62,6 @@
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-  <!-- Iconify (Iconsax icons — same family as the Sekka app) -->
-  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
 
 <body class="rtl antialiased">
@@ -106,8 +103,12 @@
 
         <!-- Dark Mode Toggle -->
         <button class="icon-btn" data-theme-toggle aria-label="Toggle theme">
-          <iconify-icon data-icon="moon" icon="iconsax:moon" width="20"></iconify-icon>
-          <iconify-icon data-icon="sun" icon="iconsax:sun-1" width="20" style="display:none"></iconify-icon>
+          <svg data-icon="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.5 14.98c-.24.04-.49.07-.74.09-3.56.24-6.84-1.79-8.07-5.07-.33-.85-.53-1.79-.57-2.7-.07-1.41.33-2.75 1.04-3.91.41-.68-.08-1.52-.87-1.48-4.95.26-9.25 4.37-9.25 9.55A9.52 9.52 0 0 0 12.5 21.5c4.28 0 7.94-2.81 9.17-6.69.27-.83-.63-1.62-1.17-1.33l.03.05z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg data-icon="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+            <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM19.14 19.14l-.13-.13M19.01 4.99l-.13.13M4.86 19.14l.13-.13M4.99 4.99l.13.13M2 12h.2M12 2.2V2M21.8 12h.2M12 21.8v.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </button>
 
         <!-- CTA -->
@@ -115,7 +116,12 @@
 
         <!-- Hamburger -->
         <button id="hamburger-btn" class="lg:hidden icon-btn" aria-label="Menu">
-          <iconify-icon icon="iconsax:element-4" width="22"></iconify-icon>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="8.5" height="8.5" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="13.5" y="2" width="8.5" height="8.5" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="2" y="13.5" width="8.5" height="8.5" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="13.5" y="13.5" width="8.5" height="8.5" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
         </button>
       </div>
     </div>
@@ -130,7 +136,10 @@
         <span class="text-xl font-black gradient-text">سِكّة</span>
       </div>
       <button id="drawer-close" class="icon-btn" aria-label="Close">
-        <iconify-icon icon="iconsax:close-circle" width="22"></iconify-icon>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M9.17 14.83l5.66-5.66M14.83 14.83L9.17 9.17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
       </button>
     </div>
     <nav class="flex flex-col gap-4 text-lg">
@@ -314,19 +323,32 @@
                   <!-- Bottom Nav -->
                   <div class="app-ui-nav">
                     <div class="app-ui-nav-item active">
-                      <iconify-icon icon="iconsax:home-2-bold" width="20"></iconify-icon>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.07 2.82L3.14 8.37c-.77.6-1.26 1.89-1.09 2.85l1.33 7.98c.24 1.39 1.57 2.51 2.98 2.51h11.27c1.4 0 2.73-1.12 2.98-2.51l1.33-7.98c.16-.96-.33-2.25-1.09-2.85l-6.93-5.54a3.35 3.35 0 0 0-3.86-.01z"/>
+                        <path d="M12 17v-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
                       <span data-i18n="phone.nav.home">الرئيسية</span>
                     </div>
                     <div class="app-ui-nav-item">
-                      <iconify-icon icon="iconsax:box-1" width="20"></iconify-icon>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.17 7.44L12 12.55l8.77-5.08M12 21.61v-9.07" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.93 2.48l-5.34 2.97c-1.21.67-2.2 2.35-2.2 3.73v5.65c0 1.38.99 3.06 2.2 3.73l5.34 2.97c1.14.63 3.01.63 4.15 0l5.34-2.97c1.21-.67 2.2-2.35 2.2-3.73V9.18c0-1.38-.99-3.06-2.2-3.73l-5.34-2.97c-1.15-.64-3.01-.64-4.15 0z" stroke="currentColor" stroke-width="1.5"/>
+                      </svg>
                       <span data-i18n="phone.nav.orders">الطلبات</span>
                     </div>
                     <div class="app-ui-nav-item">
-                      <iconify-icon icon="iconsax:map" width="20"></iconify-icon>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.89 4.73L3.91 6.34C2.58 6.78 2 7.72 2 9.13v4.91c0 2.49 1.77 3.42 3.92 2.07l.49-.32c.67-.4 1.78-.45 2.52-.09l3.68 1.84c.74.37 1.87.34 2.52-.08l4.48-2.88c1.33-.85 1.91-1.8 1.91-3.2V6.47c0-2.49-1.77-3.42-3.92-2.07l-.49.31c-.67.41-1.78.46-2.52.08l-3.68-1.83c-.74-.37-1.85-.32-2.52.07z" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M9.04 4.5v11M14.97 8v11.5" stroke="currentColor" stroke-width="1.5"/>
+                      </svg>
                       <span data-i18n="phone.nav.map">الخريطة</span>
                     </div>
                     <div class="app-ui-nav-item">
-                      <iconify-icon icon="iconsax:profile-circle" width="20"></iconify-icon>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="12" cy="10" r="3.25" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M5.24 17.91a6 6 0 0 1 5.26-2.91h3a6 6 0 0 1 5.26 2.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
                       <span data-i18n="phone.nav.profile">حسابي</span>
                     </div>
                   </div>
@@ -486,73 +508,102 @@
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- Feature 1 -->
+        <!-- Feature 1 — Clipboard / Paste -->
         <div class="reveal feature-card" data-delay="100">
           <div class="feature-icon-wrap">
-            <iconify-icon icon="iconsax:clipboard-text" width="30"></iconify-icon>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 2h8a2 2 0 0 1 2 2v1h1.5a2.5 2.5 0 0 1 2.5 2.5v12a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 19.5v-12A2.5 2.5 0 0 1 4.5 5H6V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M8 4.5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
           </div>
           <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.1.title">نسخ من الواتساب</h3>
           <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.1.desc">الصق رسالة الواتساب والتطبيق يقراها ويسجّل الطلب في ثانية</p>
         </div>
 
-        <!-- Feature 2 -->
+        <!-- Feature 2 — Routing -->
         <div class="reveal feature-card" data-delay="200">
           <div class="feature-icon-wrap">
-            <iconify-icon icon="iconsax:routing-2" width="30"></iconify-icon>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="5" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="19" cy="19" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M5 7.5v2c0 3 2 5 5 5h4c3 0 5 2 5 5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
           </div>
           <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.2.title">ترتيب المسار الذكي</h3>
           <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.2.desc">بيرتبلك الطلبات بالأقرب والأعجل — وفّر نص المسافة</p>
         </div>
 
-        <!-- Feature 3 -->
+        <!-- Feature 3 — Microphone -->
         <div class="reveal feature-card" data-delay="300">
           <div class="feature-icon-wrap">
-            <iconify-icon icon="iconsax:microphone-2" width="30"></iconify-icon>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M5 11a7 7 0 0 0 14 0M12 18v3M8.5 21h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
           </div>
           <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.3.title">الإدخال الصوتي</h3>
           <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.3.desc">كلّمه وأنت سايق وهو يسجّل — إضافة طلب، تغيير حالة، ملاحظات</p>
         </div>
 
-        <!-- Feature 4 -->
+        <!-- Feature 4 — Offline / Cloud Cross -->
         <div class="reveal feature-card" data-delay="400">
           <div class="feature-icon-wrap">
-            <iconify-icon icon="iconsax:cloud-cross" width="30"></iconify-icon>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 18h-11a4.5 4.5 0 0 1-.84-8.92 6 6 0 0 1 11.4-1.25 4 4 0 0 1 .44 10.17z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M14.5 11.5l-5 5M9.5 11.5l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
           </div>
           <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.4.title">يشتغل بدون نت</h3>
           <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.4.desc">السائق مش دايماً online — التطبيق بيحفظ ويكامل لما النت يرجع</p>
         </div>
 
-        <!-- Feature 5 -->
+        <!-- Feature 5 — Wallet -->
         <div class="reveal feature-card" data-delay="100">
           <div class="feature-icon-wrap">
-            <iconify-icon icon="iconsax:wallet-2" width="30"></iconify-icon>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 13.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="currentColor"/>
+              <path d="M3.5 9c0-2 1.12-3.5 3.5-3.5h10c2.38 0 3.5 1.5 3.5 3.5v6c0 2.2-1.3 3.5-3.5 3.5H7c-2.2 0-3.5-1.3-3.5-3.5V9z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M17 6l-2-2.5c-1-1-2-1-3-.5L8 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M22 12.5h-2.5a1.5 1.5 0 0 0 0 3H22" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
           </div>
           <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.5.title">محاسبة دقيقة</h3>
           <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.5.desc">تعرف كسبان كام لحظة بلحظة — كاش، تحويل، انستاباي، فودافون كاش</p>
         </div>
 
-        <!-- Feature 6 -->
+        <!-- Feature 6 — Shield with tick -->
         <div class="reveal feature-card" data-delay="200">
           <div class="feature-icon-wrap">
-            <iconify-icon icon="iconsax:shield-tick" width="30"></iconify-icon>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.5L4.5 5.5v6c0 4.5 3.2 8.5 7.5 10 4.3-1.5 7.5-5.5 7.5-10v-6L12 2.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
           <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.6.title">حماية من النصب</h3>
           <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.6.desc">صور للتسليم، geofencing، توثيق كامل — حقك محفوظ</p>
         </div>
 
-        <!-- Feature 7 -->
+        <!-- Feature 7 — Map -->
         <div class="reveal feature-card" data-delay="300">
           <div class="feature-icon-wrap">
-            <iconify-icon icon="iconsax:map-1" width="30"></iconify-icon>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 3.5l-6 2v15l6-2 6 2 6-2v-15l-6 2-6-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M9 3.5v15M15 5.5v15" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
           </div>
           <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.7.title">الخرائط المفضلة</h3>
           <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.7.desc">Google Maps أو Waze — ضغطة واحدة والعنوان جاهز</p>
         </div>
 
-        <!-- Feature 8 -->
+        <!-- Feature 8 — Danger / SOS -->
         <div class="reveal feature-card" data-delay="400">
           <div class="feature-icon-wrap">
-            <iconify-icon icon="iconsax:danger" width="30"></iconify-icon>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M12 9v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              <circle cx="12" cy="17.5" r="1" fill="currentColor"/>
+            </svg>
           </div>
           <h3 class="text-xl font-black mb-2 text-headline dark:text-white" data-i18n="feature.8.title">زر الاستغاثة</h3>
           <p class="text-body dark:text-gray-400 text-sm leading-relaxed" data-i18n="feature.8.desc">SOS button — أمانك أولاً، بيشارك موقعك مع أشخاص تثق فيهم</p>
@@ -789,16 +840,16 @@
           </p>
           <div class="flex gap-3">
             <a href="#" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="Facebook">
-              <iconify-icon icon="mdi:facebook" width="20"></iconify-icon>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
             <a href="#" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="Instagram">
-              <iconify-icon icon="mdi:instagram" width="20"></iconify-icon>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
             </a>
             <a href="#" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="TikTok">
-              <iconify-icon icon="simple-icons:tiktok" width="18"></iconify-icon>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg>
             </a>
             <a href="#" class="icon-btn !bg-white/5 !text-gray-300 hover:!bg-primary" aria-label="X">
-              <iconify-icon icon="ri:twitter-x-fill" width="18"></iconify-icon>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
           </div>
         </div>
@@ -820,15 +871,23 @@
           <h4 class="text-white font-black text-lg mb-4" data-i18n="footer.contact.title">تواصل معانا</h4>
           <ul class="space-y-3 text-sm">
             <li class="flex items-center gap-2 text-gray-400">
-              <iconify-icon icon="iconsax:sms" width="20"></iconify-icon>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 20H7c-3 0-5-1.5-5-5V9c0-3.5 2-5 5-5h10c3 0 5 1.5 5 5v6c0 3.5-2 5-5 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M17 9.5l-3.13 2.5c-1.03.82-2.72.82-3.75 0L7 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
               <a href="mailto:support@sekka.app" class="hover:text-primary" data-i18n="footer.contact.email">support@sekka.app</a>
             </li>
             <li class="flex items-center gap-2 text-gray-400">
-              <iconify-icon icon="iconsax:call" width="20"></iconify-icon>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.97 18.33a2.54 2.54 0 0 1-.25 1.09c-.17.35-.4.69-.71 1-.51.56-1.07.97-1.71 1.22-.63.25-1.31.38-2.04.38-1.07 0-2.21-.25-3.41-.77a18.4 18.4 0 0 1-3.6-2.08 29.9 29.9 0 0 1-5.24-5.23 18 18 0 0 1-2.06-3.58C2.42 9.18 2.17 8.04 2.17 6.96c0-.71.12-1.38.37-2 .25-.64.65-1.22 1.21-1.74A3.08 3.08 0 0 1 5.93 2.33c.31 0 .61.07.88.2.28.12.53.32.72.59l2.48 3.5c.19.27.33.52.43.74.09.23.15.46.15.66 0 .25-.07.5-.22.74-.14.24-.35.49-.61.74L8.7 9.38a.58.58 0 0 0-.17.43c0 .09.01.17.03.26.03.09.06.16.09.23.18.34.49.77.93 1.3.45.52.94 1.06 1.45 1.6.54.54 1.07 1.03 1.61 1.48.53.44.97.74 1.33.92.05.02.11.04.18.07.08.03.16.04.25.04.17 0 .31-.06.43-.18l.78-.77a3 3 0 0 1 .78-.61c.24-.15.49-.22.75-.22.2 0 .42.05.66.14.24.1.48.23.75.42l3.55 2.52c.26.19.45.41.56.68.1.27.16.54.16.83z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+              </svg>
               <a href="tel:01000000000" class="hover:text-primary" data-i18n="footer.contact.phone">01000000000</a>
             </li>
             <li class="flex items-center gap-2 text-gray-400">
-              <iconify-icon icon="iconsax:location" width="20"></iconify-icon>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3.62 8.49c1.97-8.66 14.79-8.65 16.76.01 1.16 5.08-2 9.38-4.77 12.04a5.19 5.19 0 0 1-7.23 0c-2.76-2.66-5.92-6.97-4.76-12.05z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
               <span>القاهرة، مصر</span>
             </li>
           </ul>

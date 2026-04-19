@@ -180,7 +180,7 @@ Pills/Chips:  100px (full)
 | [Tailwind CSS](https://tailwindcss.com/) | التنسيق | CDN (Play CDN) |
 | [Vanilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) | التفاعلات والـ animations | — |
 | [jQuery](https://jquery.com/) | Smooth scroll + counters | CDN |
-| [Iconify](https://iconify.design/) | أيقونات Iconsax (نفس عائلة التطبيق) | CDN |
+| Inline SVG Icons | أيقونات بستايل Iconsax (نفس عائلة التطبيق) | Inline |
 | [Google Fonts](https://fonts.google.com/) | Tajawal + Inter | CDN |
 
 </div>
@@ -229,7 +229,7 @@ Sekka-Landing-Page/
 ### 📋 Prerequisites
 
 - متصفح حديث (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+)
-- اتصال إنترنت (للـ CDN الخاصة بـ Tailwind, jQuery, Iconify, Fonts)
+- اتصال إنترنت (للـ CDN الخاصة بـ Tailwind, jQuery, Fonts)
 
 ### ⚡ تشغيل الموقع محلياً
 
@@ -503,15 +503,12 @@ translations.fr = {
 - **[Inter](https://fonts.google.com/specimen/Inter)** by Rasmus Andersson
 
 ### 🎯 الأيقونات
-- **[Iconsax](https://iconsax.io/)** by VuesaxLab
-- **[Material Design Icons](https://materialdesignicons.com/)** (Social)
-- **[Simple Icons](https://simpleicons.org/)** (TikTok)
-- **[Remix Icon](https://remixicon.com/)** (X/Twitter)
+- **[Iconsax](https://iconsax.io/)** by VuesaxLab — أسلوب الأيقونات Linear/Bold
+- **Inline SVG** — مكتوبة يدوياً بستايل Iconsax لضمان عدم وجود dependencies
 
 ### 🛠️ المكتبات
 - **[Tailwind CSS](https://tailwindcss.com/)**
 - **[jQuery](https://jquery.com/)**
-- **[Iconify](https://iconify.design/)**
 
 ---
 
